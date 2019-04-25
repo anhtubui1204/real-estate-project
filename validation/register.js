@@ -7,7 +7,7 @@ module.exports = function validateRegisterInput(data){
     data.name = !isEmpty(data.name)? data.name : '';
     data.email = !isEmpty(data.email)? data.email : '';
     data.password = !isEmpty(data.password)? data.password : '';
-    data.confirmedPassword = !isEmpty(data.confirmedPassword)? data.confirmedPassword : '';
+    data.password2 = !isEmpty(data.password2)? data.password2 : '';
 
 
     if (!Validator.isLength(data.name, {min: 2, max: 30})){
@@ -31,7 +31,7 @@ module.exports = function validateRegisterInput(data){
         errors.password = 'Password field is required';
     }
 
-    if (!Validator.equals(data.password, data.password)){
+    if (!Validator.equals(data.password, data.password2)){
         errors.password2 = 'Password not match';
     }
     if (Validator.isEmpty(data.password2)){
