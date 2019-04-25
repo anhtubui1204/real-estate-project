@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport'); //used to authorize the JWT token
 
 const users= require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const ads = require('./routes/api/ads');
+
 
 //DB config 
 const db = require('./config/key').mongoURI;
@@ -14,6 +17,19 @@ mongoose.connect(db,  {useNewUrlParser: true})
     .catch(err => console.log(err));
 
 const app = express();
+
+
+//Body parser middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+
+//Passport middleware
+app.use(passport.initialize());
+
+//Passport Config
+require('./config/passport')(passport);
+
 
 app.get('/', (req, res)=> {
     res.send('Hello server')
