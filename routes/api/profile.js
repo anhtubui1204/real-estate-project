@@ -27,6 +27,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
     const errors = {};
     
     Profile.findOne({user: req.user.id})
+        .populate('user', ['name', 'avatar']) 
         .then(profile=> {
             if(!profile){
                 errors.noprofile= 'There is no profile for this user';
@@ -36,6 +37,19 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
         })
         .catch(err => res.status(404).json(err));
 });
+
+//@ route GET api/profile/handle/:handle
+//Get user profile by handle
+//@ access private
+router.get('/handle/:handle', (req, res)=> {
+    Profile.findOne({handle: req.params.handle})
+        .populate('user', ['name', 'avatar'])
+        .then(profile=> {
+            if(!profile){
+                erros.noprofile='There is no profile for this user'
+            }
+        }); 
+})
 
 //@ route Post api/profile/
 //Create user profile
@@ -68,6 +82,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
     if(req.body.instagram) profileFields.social.instagram = req.body.instagram;
 
     Profile.findOne({user: req.user.id})
+         //display the user model
         .then(profile=> {
             if(profile){
                 //Update
@@ -75,7 +90,6 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
                     .then(profile=> res.json(profile))
             } else {
                 //Create profile
-                
                 //Check if handle exists
                 Profile.findOne({handle: profileFields.handle})
                     .then(profile=> {
