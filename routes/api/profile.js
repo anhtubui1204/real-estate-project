@@ -38,17 +38,62 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
         .catch(err => res.status(404).json(err));
 });
 
+
+//@ route GET api/profile/all
+//Get all user profiles
+//@ access public
+router.get('/all', (req,res)=> {
+    const errors = {}
+
+    Profile.find()
+        .populate('user', ['name', 'avatar'])
+        .then(profiles=>{
+            if(!profiles){
+                erros.noprofile='There us no profile'
+                res.status(404).json();
+            }
+            res.json(profiles);
+        })
+        .catch(err=> res.status(404).json({noprofile: 'There is no profile'}))
+})
+
+
 //@ route GET api/profile/handle/:handle
 //Get user profile by handle
 //@ access private
 router.get('/handle/:handle', (req, res)=> {
+    const errors = {}
+
     Profile.findOne({handle: req.params.handle})
         .populate('user', ['name', 'avatar'])
         .then(profile=> {
             if(!profile){
-                erros.noprofile='There is no profile for this user'
+                errors.noprofile='There is no profile for this user';
+                res.status(404).json(errors)
+            }else{
+                res.json(profile);
             }
-        }); 
+            
+        })
+        .catch(err=> res.status(404).json(err))
+})
+
+//@ route GET api/profile/user/:user_id
+//Get user profile by user_id
+//@ access private
+router.get('/user/:user_id', (req, res)=> {
+    const errors = {}
+
+    Profile.findOne({user: req.params.user_id})
+        .populate('user', ['name', 'avatar'])
+        .then(profile=> {
+            if(!profile){
+                errors.noprofile='There is no profile for this user';
+                res.status(404).json(errors)
+            }
+            res.json(profile);
+        })
+        .catch(err=> res.status(404).json({noprofile: 'There is no profile for this user id'}))
 })
 
 //@ route Post api/profile/
