@@ -8,6 +8,10 @@ const AdsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
+    project: {
+        type: Schema.Types.ObjectId,
+        ref: 'project'
+    },
     title: {
         type: String,
         required: true
@@ -33,13 +37,13 @@ const AdsSchema = new Schema({
     },
     address: {
         street: {
-            type: 'String'
+            type: String
         },
         district: {
-            type: 'String'
+            type: String
         },
         city: {
-            type: 'String'
+            type: String
         }
         
     },
@@ -59,18 +63,18 @@ const AdsSchema = new Schema({
     },
     imageURL: {
         imageMain: {
-            type: 'String',
+            type: String,
             required: true
         },
         otherImgages: {
             image1: {
-                type: 'String'
+                type: String
             },
             image2: {
-                type: 'String'
+                type: String
             },
             image3: {
-                type: 'String'
+                type: String
             }
         }
     }

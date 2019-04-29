@@ -6,6 +6,7 @@ const passport = require('passport'); //used to authorize the JWT token
 const users= require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const ads = require('./routes/api/ads');
+const project = require('./routes/api/project');
 
 
 //DB config 
@@ -39,6 +40,7 @@ app.get('/', (req, res)=> {
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/ads', ads);
+app.use('/api/project', project);
 
 const port = process.env.PORT || 5000;
 
