@@ -9,13 +9,19 @@ module.exports = function validateProjectInput(data){
     data.projectType = !isEmpty(data.projectType)? data.projectType : '';
     data.totalArea = !isEmpty(data.totalArea)? data.totalArea : '';
     data.startYear = !isEmpty(data.startYear)? data.startYear : '';
-
+    data.imageURL = !isEmpty(data.imageURL)? data.imageURL : '';
+    data.endYear = !isEmpty(data.endYear)? data.endYear : '';
+    data.projectHandle = !isEmpty(data.projectHandle)? data.projectHandle : '';
 
     if (!Validator.isLength(data.name, {min: 2, max: 30})){
         errors.name = 'Name must be between 2 and 30 characters';
     }
     if (Validator.isEmpty(data.name)){
         errors.name = 'Name field is required';
+    }
+
+    if (Validator.isEmpty(data.projectHandle)){
+        errors.projectHandle = 'Name field is required';
     }
 
     if (!Validator.isLength(data.owner, {min: 2, max: 30})){
@@ -46,8 +52,21 @@ module.exports = function validateProjectInput(data){
         errors.startYear = 'Start Year must be Number';
     }
 
-    if (!Validator.isFloat(data.endYear)){
-        errors.endYear = 'Start Year must be Number';
+    if(!isEmpty(data.endYear)){
+        if (!Validator.isFloat(data.endYear)){
+            errors.endYear = 'Start Year must be Number';
+        }
+    }       
+
+    if(!isEmpty(data.imageURL)){
+        if(!Validator.isURL(data.imageURL)){
+            errors.imageURL = 'Invalid URL'
+        }
+    }
+    if(!isEmpty(data.website)){
+        if(!Validator.isURL(data.website)){
+            errors.website = 'Invalid URL'
+        }
     }
 
     

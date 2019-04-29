@@ -3,11 +3,23 @@ const Schema = mongoose.Schema;
 
 //Create Project Schema
 const ProjectSchema = new Schema ({
+    user:{
+        type: Schema.Types.ObjectId, //this means each profile will associate the user by its id
+        ref: 'users' //reference from users collection
+    },
+    projectHandle:{
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
     },
     owner: {
+        type: String,
+        required: true
+    },
+    imageURL:{
         type: String,
         required: true
     },
@@ -19,6 +31,9 @@ const ProjectSchema = new Schema ({
         type: Number,
         required: true
     },
+    website: {
+        type: String
+    },
     startYear: {
         type: Number,
         required: true
@@ -26,7 +41,11 @@ const ProjectSchema = new Schema ({
     endYear: {
         type: Number
         
-    }
+    },
+    postDate: {
+        type: Date,
+        default: Date.now
+    },
 
 })
 
