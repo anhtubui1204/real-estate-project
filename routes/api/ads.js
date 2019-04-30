@@ -10,6 +10,7 @@ const auth = passport.authenticate('jwt', {session: false});
 const Project = require('../../models/Project');
 const Ads = require('../../models/Ads');
 
+//Load
 
 //@ route GET api/ads/test
 //Test ads route
@@ -24,6 +25,9 @@ router.get('/test',(req, res)=> {
 //@ route POST api/ads
 //Post new ADS
 //@ access private
+router.post('/', auth, (req, res)=> {
+
+})
 
 
 //@route GET api/ads

@@ -20,7 +20,7 @@ const AdsSchema = new Schema({
         type: Number,
         required: true
     },
-    area: {
+    areaSqm: {
         type: Number,
         required: true
     },

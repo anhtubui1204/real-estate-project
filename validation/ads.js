@@ -4,72 +4,87 @@ const isEmpty = require('./is-Empty');
 module.exports = function validateAdsInput(data){
     let errors = {}
 
+    //Convert all the value of null or undifined into a string of null
+    data.title = !isEmpty(data.title)? data.title : '';
+    data.price = !isEmpty(data.price)? data.price : '';
+    data.areaSqm = !isEmpty(data.areaSqm)? data.areaSqm : '';
+    data.nBedRooms = !isEmpty(data.nBedRooms)? data.nBedRooms : '';
+    data.nFloors = !isEmpty(data.nFloors)? data.nFloors : '';
+    
     data.name = !isEmpty(data.name)? data.name : '';
-    data.owner = !isEmpty(data.owner)? data.owner : '';
-    data.projectType = !isEmpty(data.projectType)? data.projectType : '';
-    data.totalArea = !isEmpty(data.totalArea)? data.totalArea : '';
-    data.startYear = !isEmpty(data.startYear)? data.startYear : '';
+    data.phone = !isEmpty(data.phone)? data.phone : '';
     data.imageURL = !isEmpty(data.imageURL)? data.imageURL : '';
-    data.endYear = !isEmpty(data.endYear)? data.endYear : '';
-    data.projectHandle = !isEmpty(data.projectHandle)? data.projectHandle : '';
 
-    if (!Validator.isLength(data.name, {min: 2, max: 30})){
-        errors.name = 'Name must be between 2 and 30 characters';
-    }
+   
     if (Validator.isEmpty(data.name)){
         errors.name = 'Name field is required';
     }
 
-    if (Validator.isEmpty(data.projectHandle)){
-        errors.projectHandle = 'Name field is required';
+    if (!Validator.isLength(data.title, {min: 2, max: 30})){
+        errors.title = 'Title must be between 2 and 30 characters';
+    }
+    if (Validator.isEmpty(data.title)){
+        errors.title = 'Title field is required';
     }
 
-    if (!Validator.isLength(data.owner, {min: 2, max: 30})){
-        errors.owner = 'Owner must be between 2 and 30 characters';
+    if (Validator.isEmpty(data.price)){
+        errors.price = 'Area field is required';
     }
-    if (Validator.isEmpty(data.owner)){
-        errors.owner = 'Owner field is required';
-    }
-
-    if (!Validator.isLength(data.projectType, {min: 2, max: 30})){
-        errors.projectType = 'Project Type must be between 2 and 30 characters';
-    }
-    if (Validator.isEmpty(data.projectType)){
-        errors.projectType = 'Project Type field is required';
+    if (!Validator.isFloat(data.price)){
+        errors.price = 'Area must be Number';
     }
 
-    if (Validator.isEmpty(data.totalArea)){
-        errors.totalArea = 'Area field is required';
+    if (Validator.isEmpty(data.areaSqm)){
+        errors.areaSqm = 'Area field is required';
     }
-    if (!Validator.isFloat(data.totalArea)){
-        errors.totalArea = 'Area must be Number';
+    if (!Validator.isFloat(data.areaSqm)){
+        errors.areaSqm = 'Area must be Number';
     }
     
-    if (Validator.isEmpty(data.startYear)){
-        errors.startYear = 'Start Year field is required';
+    if (Validator.isEmpty(data.nBedRooms)){
+        errors.nBedRooms = 'Number of Bed Rooms field is required';
     }
-    if (!Validator.isFloat(data.startYear)){
-        errors.startYear = 'Start Year must be Number';
-    }
-
-    if(!isEmpty(data.endYear)){
-        if (!Validator.isFloat(data.endYear)){
-            errors.endYear = 'Start Year must be Number';
-        }
-    }       
-
-    if(!isEmpty(data.imageURL)){
-        if(!Validator.isURL(data.imageURL)){
-            errors.imageURL = 'Invalid URL'
-        }
-    }
-    if(!isEmpty(data.website)){
-        if(!Validator.isURL(data.website)){
-            errors.website = 'Invalid URL'
-        }
+    if (!Validator.isFloat(data.nBedRooms)){
+        errors.nBedRooms = 'Number of Bed Rooms must be Number';
     }
 
-    
+    if (Validator.isEmpty(data.nFloors)){
+        errors.nFloors = 'Number of floors field is required';
+    }
+    if (!Validator.isFloat(data.nFloors)){
+        errors.nFloors = 'Number of floors must be Number';
+    }
+ 
+    if (Validator.isEmpty(data.name)){
+        errors.name = 'Contact name field is required';
+    }
+
+    if (Validator.isEmpty(data.phone)){
+        errors.phone = 'Phone number field is required';
+    }
+    if (!Validator.isMobilePhone(data.phone)){
+        errors.phone = 'Phone number must start with +';
+    }
+
+    if (Validator.isEmpty(data.imageMain)){
+        errors.imageMain = 'URL for Main Image is required';
+    }
+    if(!Validator.isURL(data.imageMain)){
+        errors.imageMain = 'Invalid URL'
+    }
+
+    if(!Validator.isURL(data.image1)){
+        errors.image1 = 'Invalid URL'
+    }
+
+    if(!Validator.isURL(data.image2)){
+        errors.image2 = 'Invalid URL'
+    }
+
+    if(!Validator.isURL(data.image3)){
+        errors.image3 = 'Invalid URL'
+    }
+
     return {
         errors,
         isValid: isEmpty(errors)

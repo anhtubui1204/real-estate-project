@@ -4,7 +4,7 @@ const isEmpty = require('./is-Empty');
 module.exports = function validateProfileInput(data){
     let errors = {}
 
-    
+    //Convert all the value of null or undifined into a string of null
     data.handle = !isEmpty(data.handle)? data.handle : '';
     data.status = !isEmpty(data.status)? data.status : '';
    

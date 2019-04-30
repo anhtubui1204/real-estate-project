@@ -4,7 +4,7 @@ const isEmpty = require('./is-Empty');
 module.exports = function validateLoginInput(data){
     let errors = {}
 
-    
+    //Convert all the value of null or undifined into a string of null
     data.email = !isEmpty(data.email)? data.email : '';
     data.password = !isEmpty(data.password)? data.password : '';
    

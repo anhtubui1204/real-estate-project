@@ -4,6 +4,7 @@ const isEmpty = require('./is-Empty');
 module.exports = function validateProjectInput(data){
     let errors = {}
 
+    //Convert all the value of null or undifined into a string of null
     data.name = !isEmpty(data.name)? data.name : '';
     data.owner = !isEmpty(data.owner)? data.owner : '';
     data.projectType = !isEmpty(data.projectType)? data.projectType : '';
