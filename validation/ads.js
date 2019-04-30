@@ -67,8 +67,8 @@ module.exports = function validateAdsInput(data){
     if (Validator.isEmpty(data.phone)){
         errors.phone = 'Phone number field is required';
     }
-    if (!Validator.isMobilePhone(data.phone)){
-        errors.phone = 'Phone number must start with +';
+    if (!Validator.isMobilePhone(data.phone, 'vi-VN', true)){
+        errors.phone = 'invalid phone number';
     }
 
     if (Validator.isEmpty(data.imageMain)){

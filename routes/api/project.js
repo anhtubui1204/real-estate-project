@@ -14,9 +14,6 @@ const Project = require('../../models/Project');
 const validateProjectInput = require('../../validation/project');
 
 
-
-mongoose.set('useFindAndModify', true);
-
 //@ route GET api/project/test
 //Test project route
 //@ access public
@@ -102,6 +99,7 @@ router.post('/', auth, (req,res)=> {
 router.get('/:id',  (req,res)=> {
     const errors = {}
     Project.findById(req.params.id)
+        .populate('user', ['name', 'avatar'])
         .then(project => {
             if (!project){
                 errors.noproject = 'Project not found';

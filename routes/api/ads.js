@@ -97,7 +97,22 @@ router.post('/', auth, (req, res)=> {
 //@route GET api/ads
 //GET current user ads
 //@access private
+router.get('/', auth, (req, res)=> {
+    const errors = {}
 
+    Ads.find({user: req.user.id})
+        .populate('user', ['name', 'avatar'])
+        .populate('project', ['name', 'owner'])
+        .then(ads=>{
+            if(ads.length===0){
+                errors.noads= 'There is no ads for this user';
+                return res.status(404).json(errors)
+            }else{
+                res.json(ads)
+            }
+        })
+        .catch(err => res.status(404).json(err));
+})
 
 //@route GET api/ads/all
 //GET all ads
@@ -122,18 +137,88 @@ router.get('/all', (req,res)=> {
 //@route GET api/ads/:id
 //GET ads by id
 //Access public
+router.get('/:id',  (req,res)=> {
+    const errors = {}
+    Ads.findById(req.params.id)
+        .populate('user', ['name', 'avatar'])
+        .populate('project', ['name', 'owner'])
+        .then(ads => {
+            if (!ads){
+                errors.noads = 'Ads not found';
+                res.status(404).json(errors)
+            } else {
+                res.json(ads)
+            }
+        })
+        .catch(err => res.status(500).json({msg: 'Server Error'}))
+   
+})
 
 //@route GET api/ads/project/:id
 //GET ads by project id
 //Access public
+router.get('/project/:id',  (req,res)=> {
+    const errors = {}
+    Ads.find({project: req.params.id})
+        .populate('user', ['name', 'avatar'])
+        .populate('project', ['name', 'owner'])
+        .then(ads => {
+            if (ads.length===0){
+                errors.noads = 'Ads not found';
+                res.status(404).json(errors)
+            } else {
+                ads
+                
+                res.json(ads)
+            }
+        })
+        .catch(err => res.status(500).json({msg: 'Server Error'}))
+   
+})
 
 //@route DELETE api/ads/:id
 //DELETE ads
 //access private
+router.delete('/delete/:id', auth, (req,res)=> {
+    const errors = {}
+
+    Ads.findById(req.params.id)
+        .then(ads=> {
+            if(ads.user.toString() !== req.user.id){
+                errors.unAuth = 'User not Authorized'
+                res.status(401).json(errors)
+            } else {
+                ads.remove();
+                res.json({msg: 'ads removed'})
+            }
+        })
+        .catch(err => res.status(500).json(err))
+   
+})
 
 //@route PUT api/ads/:id
 //Update ads
 //access private
+router.put('/update/:id', auth, (req,res)=> {
+    const{ errors, isValid}=validateAdsInput(req.body);
+    //Check Validation
+    if(!isValid){
+        return res.status(400).json(errors)
+    }
+
+    Ads.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
+        .then(ads=> {
+            if(ads.user.toString() !== req.user.id){
+                errors.unAuth = 'User not Authorized'
+                res.status(401).json(errors)
+            } else {
+                
+               res.json(ads)
+            }
+        })
+        .catch(err => res.status(500).json(err))
+
+})
 
 
 module.exports = router;

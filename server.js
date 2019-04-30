@@ -13,10 +13,11 @@ const project = require('./routes/api/project');
 const db = require('./config/key').mongoURI;
 
 //connect to mongoDB
-mongoose.connect(db,  {useNewUrlParser: true})
+mongoose.connect(db,  {useNewUrlParser: true, useFindAndModify: true})
     .then(()=> console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+    
 const app = express();
 
 
