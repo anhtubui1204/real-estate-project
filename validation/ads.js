@@ -1,14 +1,13 @@
 const Validator = require('validator');
 const isEmpty = require('./is-Empty');
 
-module.exports = function validateProjectInput(data){
+module.exports = function validateAdsInput(data){
     let errors = {}
 
     data.name = !isEmpty(data.name)? data.name : '';
     data.owner = !isEmpty(data.owner)? data.owner : '';
     data.projectType = !isEmpty(data.projectType)? data.projectType : '';
-    data.location = !isEmpty(data.location)? data.location : '';
-    data.totalAreaSqm = !isEmpty(data.totalAreaSqm)? data.totalAreaSqm : '';
+    data.totalArea = !isEmpty(data.totalArea)? data.totalArea : '';
     data.startYear = !isEmpty(data.startYear)? data.startYear : '';
     data.imageURL = !isEmpty(data.imageURL)? data.imageURL : '';
     data.endYear = !isEmpty(data.endYear)? data.endYear : '';
@@ -21,12 +20,8 @@ module.exports = function validateProjectInput(data){
         errors.name = 'Name field is required';
     }
 
-    if (Validator.isEmpty(data.location)){
-        errors.location = 'Location field is required';
-    }
-
     if (Validator.isEmpty(data.projectHandle)){
-        errors.projectHandle = 'Handle field is required';
+        errors.projectHandle = 'Name field is required';
     }
 
     if (!Validator.isLength(data.owner, {min: 2, max: 30})){
@@ -43,11 +38,11 @@ module.exports = function validateProjectInput(data){
         errors.projectType = 'Project Type field is required';
     }
 
-    if (Validator.isEmpty(data.totalAreaSqm)){
-        errors.totalAreaSqm = 'Area field is required';
+    if (Validator.isEmpty(data.totalArea)){
+        errors.totalArea = 'Area field is required';
     }
-    if (!Validator.isFloat(data.totalAreaSqm)){
-        errors.totalAreaSqm = 'Area must be Number';
+    if (!Validator.isFloat(data.totalArea)){
+        errors.totalArea = 'Area must be Number';
     }
     
     if (Validator.isEmpty(data.startYear)){

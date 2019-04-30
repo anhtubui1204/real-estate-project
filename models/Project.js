@@ -27,9 +27,17 @@ const ProjectSchema = new Schema ({
         type: String,
         required: true
     },
-    totalArea: {
+    location: {
+        type: String,
+        required: true
+    },
+    totalAreaSqm: {
         type: Number,
         required: true
+    },
+    totalAreaHa: {
+        type: Number,
+        
     },
     website: {
         type: String

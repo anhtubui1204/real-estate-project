@@ -7,9 +7,14 @@ const passport = require('passport');
 //Load Model
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Project = require('../../models/Project');
+const Ads = require('../../models/Ads');
 
 //Load validator
 const validateProfileInput = require('../../validation/profile');
+
+//load passport auth
+const auth = passport.authenticate('jwt', {session: false});
 
 //@ route GET api/profile/test
 //Test profile route
@@ -23,7 +28,7 @@ router.get('/test',(req, res)=> {
 //@ route GET api/profile/
 //Get current user profile
 //@ access private
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
+router.get('/', auth, (req, res)=> {
     const errors = {};
     
     Profile.findOne({user: req.user.id})
@@ -99,7 +104,7 @@ router.get('/user/:user_id', (req, res)=> {
 //@ route Post api/profile/
 //Create user profile
 //@ access private
-router.post('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
+router.post('/', auth, (req, res)=> {
     const {errors, isValid} = validateProfileInput(req.body);
 
     //Check Validation
@@ -148,9 +153,30 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res)=> {
                     })
             }
         })
+        .catch(err => res.status(500).json({msg: 'Server Error'}))
 
 });
 
+//route DELETE api/profile
+//Delete profile, user and ads
+//private access
+router.delete('/', auth, async (req, res)=> {
+    try {
+        //remove users project
+        await Project.findOneAndRemove({user: req.user.id})
+        //remove profile
+        await Profile.findOneAndRemove({user: req.user.id})
+        //remove user
+        await User.findOneAndRemove({_id: req.user.id})
+        //remove user ads
+        await Ads.findOneAndRemove({user: req.user.id})
 
+        res.json({msg: 'Usser deleted'})
+
+
+    } catch (err) {
+        res.status(500).json({msg: 'Server Error'})
+    }
+})
 
 module.exports = router;

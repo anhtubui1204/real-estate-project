@@ -9,9 +9,12 @@ const passport = require('passport');
 //Load User model
 const User = require('../../models/User');
 
+
 //Load input validation
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+
+const auth =  passport.authenticate('jwt', {session: false})
 
 //@ route GET api/users/test
 //Test users route
@@ -115,13 +118,16 @@ router.post('/login', (req, res)=> {
 //route GET api/users/current
 //return current user
 // private access
-router.get('/current', passport.authenticate('jwt', {session: false}), (req,res)=>{
+router.get('/current',auth, (req,res)=>{
     res.json({
         id: req.user.id,
         name: req.user.name,
         email: req.user.email
     });
 })
+
+
+
 
 
 
