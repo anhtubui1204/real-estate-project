@@ -7,7 +7,7 @@ class HomePage extends Component {
         return (
             <div>
                 <AppNavbar1/>
-                <div className="container" style={myStyle.mainBody} >
+                <div className="container"  >
                     <h1>Hello</h1>
                 </div>
             </div>

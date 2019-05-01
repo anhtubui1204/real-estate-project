@@ -1,6 +1,6 @@
 .top-nav {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	background-color: #563d7c;
+	background-color: #563d7c91;
     
 	
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -22,7 +22,7 @@
 
   .top-nav.light-header{
 	
-	background: #fff;
+	background: rgba(255, 255, 255, 0.775);
 	box-shadow: 0 0 10px rgba(0,0,0,0.23);
 	transition: 0.5s ease-in;
 	-webkit-transition: 0.5s ease-in;
