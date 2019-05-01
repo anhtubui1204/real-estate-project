@@ -8,7 +8,7 @@ class AppNavbar1 extends Component {
         return (
               
             <div className="main-menu">
-                <nav className="navbar navbar-expand-md navbar-dark top-nav fixed-top">
+                <nav className="navbar navbar-expand-md navbar-dark top-nav">
                     <div className="container">
                         <a className="navbar-brand" href="/"><strong>Shopping</strong></a>
 
