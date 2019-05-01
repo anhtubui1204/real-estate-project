@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CurrentUser from './CurrentUser';
 
 class LoginLogout extends Component {
     constructor() {
@@ -49,8 +50,8 @@ class LoginLogout extends Component {
 
 
     render() {
-        // const {email, password, success, token} = this.state;
-        console.log(this.state);
+        const {email, password, success, token} = this.state;
+        
         return (
             <div className="container">
                 <form>
@@ -69,7 +70,10 @@ class LoginLogout extends Component {
                     </div>
                     <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Submit</button>
                 </form>
+                <CurrentUser token={token}/>
             </div>
+
+            
         );
     }
 }
