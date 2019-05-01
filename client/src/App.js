@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router} from "react-router-dom";
 
-import './App.css';
+import AppNavbar1 from './components/layout/AppNavbar1';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <AppNavbar1/>
+          <h1>hello</h1>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
