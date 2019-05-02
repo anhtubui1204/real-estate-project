@@ -20,16 +20,16 @@
 }
 
 .top-nav .navbar-nav li a.nav-link:hover, .top-nav .nav-item.active a.nav-link{
-    border-bottom: 3px solid #01c2e4;
-    color: #01c2e4;
+    border-bottom: 3px solid #947054;
+    color: #947054;
     transition: 0.5s ease-in;
   -webkit-transition: 0.5s ease-in;
   -moz-transition: 0.5s ease-in;
   }
 
 .top-nav .navbar-brand:hover{
-    border-bottom: 3px solid #01c2e4;
-    color: #01c2e4;
+    border-bottom: 3px solid #947054;
+    color: #947054;
     transition: 0.5s ease-in;
   -webkit-transition: 0.5s ease-in;
   -moz-transition: 0.5s ease-in;

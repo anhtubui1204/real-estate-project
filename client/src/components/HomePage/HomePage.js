@@ -1,14 +1,79 @@
-import React, { Component } from 'react';
-import './home.css';
+import React, { Component,} from 'react';
+import './css/home.css';
+import {urlAds} from '../../myURL';
+// import {
+//     unstable_createResource,
+//   } from "react-cache";
 
 import AppNavbar1 from '../layout/AppNavbar1';
-import LoginLogout from '../Users/LoginLogout';
 import Banner from './Banner';
 import FilterSearch from './FilterSearch';
+import RecentAds from './RecentAds';
+
+
 
 class HomePage extends Component {
+    constructor() {
+        super()
+        this.state = {
+           adsList:[
+              {
+                  title:'',
+                  price:'',
+                  areaSqm:'',
+                  nBedRooms:0,
+                  nFloors:0,
+                  direction:'',
+                  address:{
+                    street:'',
+                    district:'',
+                    city:''
+                  },
+                  contactInfo:{
+                      name:'',
+                      phone:''
+                  },
+                  postDate:'',
+                  imageURL:{
+                    imageMain:'',
+                    otherImages:{
+                        image1:'',
+                        image2:'',
+                        image3:''
+                    }
+                  },
+                  user:{
+                      _id:'',
+                      name:'',
+                      avatar:''
+                  },
+                  project:{
+                      name:'',
+                      owner:'',
+                      _id:''
+                  }
+              }
+           ]
+        }
+    }
+
+    fetchAds=()=>{
+        fetch(urlAds+'/all')
+        .then(res => res.json())
+        .then(json => this.setState({ adsList: json }))
+    }
+
+    componentDidMount=()=>{
+        this.fetchAds()
+    }
+
+    
     render() {
+        const {adsList} = this.state;
+        console.log(adsList)
+        
         return (
+            
             <div>
                 <div className="header-area">
                     <AppNavbar1/>
@@ -18,17 +83,14 @@ class HomePage extends Component {
                     </div>
                 </div>
                 <div className="recent-properties">
-                    <h1>Hello</h1>
+                    <RecentAds adsList={adsList}/>
                 </div>
             </div>
+         
         );
     }
 }
 
-const myStyle = {
-    mainBody: {
-        padding: '80px 0 0 0'
-    }
-}
+
 
 export default HomePage;

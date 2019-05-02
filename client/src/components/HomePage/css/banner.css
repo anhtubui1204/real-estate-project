@@ -1,0 +1,15 @@
+/* Banner */
+.banner-area .banner-inner{
+    position: relative;
+    min-height: 980px;
+    background: url('../img/bg-img.jpg') no-repeat scroll center center
+}
+
+.banner-area .banner-inner h5.title{
+    font-size: 65px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: -22px;
+    text-transform: capitalize;
+    margin-left: -100px;
+}

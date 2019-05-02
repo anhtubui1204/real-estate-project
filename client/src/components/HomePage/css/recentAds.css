@@ -1,0 +1,20 @@
+.properties-area {
+    margin-top: 50px;
+}
+
+.properties-area .title{
+    text-align: center;
+    margin: 0 auto 75px;
+}
+
+.properties-area .title h1{
+    text-transform: capitalize;
+    font-weight: bold
+}
+
+.ads-item{
+    height: 300px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1)    
+}

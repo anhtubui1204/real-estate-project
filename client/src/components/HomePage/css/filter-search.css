@@ -1,0 +1,42 @@
+/* Filter */
+.filter-search{
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    float: right;
+    margin-top: -550px;
+    
+    padding: 50px 30px;
+    width: 100%;
+    max-width: 380px;
+    
+}
+@media(max-width: 991px){
+    .filter-search{
+        float: none;
+        margin-top: 50px;
+        margin: auto;
+        max-width: 500px;
+    }
+}
+.filter-search h5{
+    font-size: 30px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-weight: 550;
+    color: #947054;
+}
+.filter-search.rounded{
+    border-radius: 1rem!important;
+}
+.filter-search .form-control{
+    border-radius: 0rem!important;
+}
+.filter-search .has-warning .form-control{
+    border-color: #8a6d3b;
+    box-shadow: -4px 3px 5px 2px rgba(0,0,0,.075);
+}
+.filter-search .filter-range{
+    margin: 25px 0 15px;
+}
