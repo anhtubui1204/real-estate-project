@@ -162,7 +162,6 @@ router.put('/update/:id', auth, (req,res)=> {
         return res.status(400).json(errors)
     }
 
-   
     Project.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
         .then(project=> {
             if(project.user.toString() !== req.user.id){
@@ -176,8 +175,5 @@ router.put('/update/:id', auth, (req,res)=> {
         .catch(err => res.status(500).json(err))
 
 })
-
-
-
 
 module.exports = router;

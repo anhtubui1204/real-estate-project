@@ -126,10 +126,4 @@ router.get('/current',auth, (req,res)=>{
     });
 })
 
-
-
-
-
-
-
 module.exports = router;
