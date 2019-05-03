@@ -17,6 +17,9 @@ class RecentAds extends Component {
                 price={ads.price}
                 district={ads.address.district}
                 city={ads.address.city}
+                area={ads.areaSqm}
+                nBedRoom={ads.nBedRooms}
+                nFloor = {ads.nFloors}
             />
         )
         )

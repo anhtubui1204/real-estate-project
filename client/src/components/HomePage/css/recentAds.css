@@ -43,5 +43,30 @@
 }
 .ads-col .ads-address i{
     position: relative;
+    font-size: 14px;
 }
+.ads-col .ads-price strong{
+    font-size: 30px;
+    font-weight: 300;
+
+}
+.ads-col .ads-extra-content{
+    float: left;
+    width: 100%;
+    border-top: 1px solid #f0f0f0
+}
+.ads-col .ads-extra-content ul{
+    padding: 0 20px;
+}
+.ads-col .ads-extra-content ul li {
+    list-style: none;
+    width: 25%;
+    float: left;
+    padding: 10px 0;
+}
+.ads-col .ads-extra-content ul li span {
+    display: block;
+    color: #afafaf;
+}
+
 

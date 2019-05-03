@@ -19,11 +19,10 @@ a{
 
 /* button */
 .btn{
-  text-transform: bolder;
+  font-size: 18px;
   padding: 0 30px;
   line-height: 40px;
-  
-}
+  }
 
 .btn-search{
   color: #fff;
@@ -37,6 +36,20 @@ a{
   background: #fff;
   border: 3px solid #947054;
   border-radius: 0;
+}
+
+.btn-info{
+  border-radius: 0;
+  border: 2px solid #2866AB;
+  background: #2866AB;
+  color: #fff;
+}
+
+.btn-info:hover{
+  border-radius: 0;
+  border: 2px solid #2866AB;
+  background: #fff;
+  color: #2866AB;
 }
 
 /* Slider */
