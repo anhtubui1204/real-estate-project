@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { BrowserRouter as Router} from "react-router-dom";
-import { Spinner } from 'reactstrap';
+
 import './App.css';
 // import AppNavbar1 from './components/layout/AppNavbar1';
 // import LoginLogout from './components/Users/LoginLogout';
