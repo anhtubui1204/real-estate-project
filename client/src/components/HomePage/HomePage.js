@@ -19,44 +19,7 @@ class HomePage extends Component {
         super()
         this.state = {
             loading: false,
-           adsList:[
-            //   {
-            //       title:'',
-            //       price:'',
-            //       areaSqm:'',
-            //       nBedRooms:0,
-            //       nFloors:0,
-            //       direction:'',
-            //       address:{
-            //         street:'',
-            //         district:'',
-            //         city:''
-            //       },
-            //       contactInfo:{
-            //           name:'',
-            //           phone:''
-            //       },
-            //       postDate:'',
-            //       imageURL:{
-            //         imageMain:'',
-            //         otherImages:{
-            //             image1:'',
-            //             image2:'',
-            //             image3:''
-            //         }
-            //       },
-            //       user:{
-            //           _id:'',
-            //           name:'',
-            //           avatar:''
-            //       },
-            //       project:{
-            //           name:'',
-            //           owner:'',
-            //           _id:''
-            //       }
-            //   }
-           ]
+           adsList:[]
         }
     }
 
