@@ -6,8 +6,10 @@ class RecentAds extends Component {
     render() {
         const {adsList} = this.props
         
-
-        var listAds = adsList.map((ads, index)=>(
+        var listAds = (!adsList || !adsList.length)? (
+            <p>No Ads, sorry</p>
+        ) :
+            adsList.map((ads, index)=>(
             <SingleAds
                 key={index}
                 image={ads.imageURL.imageMain}
