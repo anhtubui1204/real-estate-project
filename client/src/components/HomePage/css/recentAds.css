@@ -13,9 +13,35 @@
     font-weight: bold
 }
 
-.ads-item{
-    height: 300px;
+/* Ads List */
+.ads-col .ads-item{
+    background-color: #fff;
     margin-bottom: 30px;
     position: relative;
-    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1)    
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    top: 0;
+    float: left; 
 }
+.ads-col .ads-media{
+    position: relative;
+}
+.ads-col .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.ads-col .ads-card-content{
+    padding: 20px;
+}
+.ads-col .ads-card-content h3{
+    font-size: 1.89rem;
+}
+.ads-col .ads-address{
+    display: table;
+    margin-bottom: 20px;
+}
+.ads-col .ads-address i{
+    position: relative;
+}
+

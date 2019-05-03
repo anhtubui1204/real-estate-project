@@ -16,4 +16,12 @@
     padding: 10px 15px;
     color: #fff;
     background-color: black;
+    position: relative;
+}
+
+@media(max-width: 991px){
+    .banner-area .banner-inner h5.title{
+        margin-left: 0;
+        text-align: center;
+    }
 }

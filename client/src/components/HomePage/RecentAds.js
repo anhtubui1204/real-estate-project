@@ -15,24 +15,22 @@ class RecentAds extends Component {
                 image={ads.imageURL.imageMain}
                 title={ads.title}
                 price={ads.price}
-                district={ads.district}
-                city={ads.city}
+                district={ads.address.district}
+                city={ads.address.city}
             />
         )
         )
 
         return (
             <div className="properties-area">
-            <div className="container">
-
-                <div className="title">
-                    <h1>most recent ads</h1>
+                <div className="container">
+                    <div className="title">
+                        <h1>most recent ads</h1>
+                    </div>
+                    <div className="ads-list row d-flex justify-content-center">
+                        {listAds}
+                    </div>
                 </div>
-                <div className="ads-list row d-flex justify-content-center">
-                    {listAds}
-                </div>
-            </div>
-                
             </div>
         );
     }
