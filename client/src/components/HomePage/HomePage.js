@@ -9,7 +9,7 @@ import {urlAds} from '../../myURL';
 import AppNavbar1 from '../layout/AppNavbar1';
 import Banner from './Banner';
 import FilterSearch from './FilterSearch';
-import RecentAds from './RecentAds';
+import RecentAds from '../Ads/RecentAds';
 import WithLoading from '../../utils/WithLoading';
 
 

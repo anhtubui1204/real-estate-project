@@ -6,6 +6,7 @@ module.exports = function validateRegisterInput(data){
 
     //Convert all the value of null or undifined into a string of null
     data.name = !isEmpty(data.name)? data.name : '';
+    data.avatar = !isEmpty(data.avatar)? data.avatar : '';
     data.email = !isEmpty(data.email)? data.email : '';
     data.password = !isEmpty(data.password)? data.password : '';
     data.password2 = !isEmpty(data.password2)? data.password2 : '';
@@ -37,6 +38,11 @@ module.exports = function validateRegisterInput(data){
     }
     if (Validator.isEmpty(data.password2)){
         errors.password2 = 'Password field is required';
+    }
+    if(!isEmpty(data.avatar)){
+        if(!Validator.isURL(data.avatar)){
+            errors.avatar = 'Invalid URL'
+        }
     }
 
     return {

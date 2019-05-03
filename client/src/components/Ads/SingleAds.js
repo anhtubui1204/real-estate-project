@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/recentAds.css'
+import './css/recentAds.css';
 import numFormatter from '../../utils/numFormatter';
 
 
