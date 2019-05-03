@@ -7,9 +7,9 @@ function WithLoading(Component) {
     if (!isLoading) return (<Component {...props} />);
     return (
       <div className="container loading-area">
-          <div className="d-flex align-items-center">
-            <strong>Loading...</strong>
-            <div className="spinner-border ml-auto" style={{width: '3rem', height: '3rem'}} role="status" aria-hidden="true" />
+          <div className="d-flex align-items-center justify-content-center">
+            {/* <strong>Loading...</strong> */}
+            <div className="spinner-border" style={{width: '10rem', height: '10rem'}} role="status" aria-hidden="true" />
           </div>
       </div>
       

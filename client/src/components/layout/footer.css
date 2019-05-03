@@ -1,0 +1,21 @@
+.footer{
+	color: #fff;
+	padding: 4rem;
+	background-color: black;
+}
+
+.footer .container {
+	padding: 0px;
+}
+
+.border-left{
+	border-bottom-left-radius: 5px;
+}
+
+.footer a{
+	color: white;
+}
+
+.footer a:hover {
+	color: #947054;
+}

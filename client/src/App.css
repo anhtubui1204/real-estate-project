@@ -19,14 +19,23 @@ a{
 
 /* button */
 .btn{
+  text-transform: bolder;
   padding: 0 30px;
   line-height: 40px;
+  
 }
 
 .btn-search{
   color: #fff;
   background: #947054;
-  border: 1px solid transparent;
+  border: 3px solid transparent;
+  border-radius: 0;
+}
+
+.btn-search:hover{
+  color: #947054;
+  background: #fff;
+  border: 3px solid #947054;
   border-radius: 0;
 }
 
@@ -66,4 +75,5 @@ a{
 .loading-area{
   height: 200px;
   padding: 100px 0;
+  position: relative
 }

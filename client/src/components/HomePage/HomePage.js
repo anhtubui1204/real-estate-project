@@ -36,7 +36,6 @@ class HomePage extends Component {
         this.fetchAds()
     }
 
-    
     render() {
         const {adsList, loading} = this.state;
         console.log(adsList)
@@ -50,9 +49,8 @@ class HomePage extends Component {
                     <FilterSearch/>
                     </div>
                 </div>
-                <div className="recent-properties">
-                        {/* <RecentAds adsList={adsList}/> */}
-                        <AdsListWithLoading isLoading={loading} adsList={adsList}/>
+                <div className="recent-properties ">
+                    <AdsListWithLoading isLoading={loading} adsList={adsList}/>
                 </div>
             </div>
         );
