@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/recentAds.css';
+import './css/ads.css';
 import SingleAds from './SingleAds';
 
 class RecentAds extends Component {
@@ -20,11 +20,15 @@ class RecentAds extends Component {
                 area={ads.areaSqm}
                 nBedRoom={ads.nBedRooms}
                 nFloor = {ads.nFloors}
+                className={"col-12 col-sm-12 col-md-12 col-lg-6 ads-col"}
             />
         )
         )
+        const listAdsSorted = adsList.sort((a,b)=>{
 
+        })
         return (
+
             <div className="properties-area">
                 <div className="container">
                     <div className="title">

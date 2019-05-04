@@ -5,10 +5,9 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   font-weight: normal;
   color: rgb(26, 25, 25);
- 
 
 }
 
@@ -17,10 +16,18 @@ a{
   text-decoration: none;
 }
 
+@media (min-width: 1200px){
+  .container {
+    max-width: 1400px;
+  }
+}
+
+
+
 /* button */
 .btn{
   font-size: 18px;
-  padding: 0 30px;
+  /* padding: 0 30px; */
   line-height: 40px;
   }
 

@@ -1,19 +1,25 @@
 .properties-area {
-    margin-top: 50px;
-    
+    padding: 50px 0;
+    background-color: rgba(253, 253, 253, 0.925);
 }
-
 .properties-area .title{
     text-align: center;
-    margin: 0 auto 75px;
-}
+    margin: 20px auto 70px;
+    background: black;
+    padding: 8px 5px;
 
+}
 .properties-area .title h1{
     text-transform: capitalize;
-    font-weight: bold
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 10px;
+    border-bottom: 1px solid;
+    font-size: 50px;
+    color: #fff;
 }
 
-/* Ads List */
+/* Ads Item */
 .ads-col .ads-item{
     background-color: #fff;
     margin-bottom: 30px;
@@ -41,6 +47,12 @@
     display: table;
     margin-bottom: 20px;
 }
+/* @media (max-width: 992px){
+    .ads-col .ads-address{
+        display: inline-grid;
+        margin-bottom: 20px;
+    }
+} */
 .ads-col .ads-address i{
     position: relative;
     font-size: 14px;
@@ -63,6 +75,7 @@
     width: 25%;
     float: left;
     padding: 10px 0;
+    display: grid;
 }
 .ads-col .ads-extra-content ul li span {
     display: block;

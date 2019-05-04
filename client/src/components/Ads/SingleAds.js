@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './css/recentAds.css';
+import './css/ads.css';
 import numFormatter from '../../utils/numFormatter';
 
 
 class SingleAds extends Component {
     render() {
-        const{title, image, price, district, city, area, nBedRoom, nFloor} = this.props
+        const{title, image, price, district, city, area, nBedRoom, nFloor, className} = this.props
         return (
-            <div className="col-12 col-sm-6 col-md-6 col-lg-6 ads-col">
+            <div className={className}>
                 <div className="ads-item">
                     <div className="ads-media">
                         <img className="img-responsive" src={image} alt="img"/>
@@ -16,7 +16,7 @@ class SingleAds extends Component {
                         <h3 style={{margin: '0px 0px 5px 0px'}}>{title}</h3>
                         <div className="ads-address">
                             <i className="fas fa-map-marker-alt" style={myStyle.address}></i>
-                            <span className="border-right" style={myStyle.address}>District: {district}</span>
+                            <span style={myStyle.address}>District: {district}</span>
                             <span style={myStyle.address}>City: {city}</span>
                         </div>
                         <div className="ads-price">

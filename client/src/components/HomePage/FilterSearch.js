@@ -15,10 +15,6 @@ class FilterSearch extends Component {
                         <input name="projectName" type="text" className="form-control" id="projectNameInput" placeholder="Project Name" />
                     </div>
                     <div className="form-group has-warning">
-                        <label htmlFor="productType">Product Type</label>
-                        <input type="text" className="form-control" id="productType" placeholder="Product Type" />
-                    </div>
-                    <div className="form-group has-warning">
                         <label htmlFor="adsNameInput">Ads Name</label>
                         <input type="text" className="form-control" id="adsNameInput" placeholder="Ads Name" />
                     </div>

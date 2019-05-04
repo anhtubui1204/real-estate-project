@@ -42,8 +42,8 @@ class HomePage extends Component {
         const AdsListWithLoading = WithLoading(RecentAds);
         return (
             <div>
+                <AppNavbar1/>
                 <div className="header-area">
-                    <AppNavbar1/>
                     <Banner/>
                     <div className="container">
                     <FilterSearch/>

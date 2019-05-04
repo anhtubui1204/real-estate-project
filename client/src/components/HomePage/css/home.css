@@ -1,13 +1,11 @@
 /* Header */
 .header-area{
     position: relative;
-    margin-bottom: 140px;
 }
 
 /* Recent Properties */
 .recent-properties{
-    
-    padding: 100px 0;
-    background-color: rgb(243, 243, 243);
+    padding-top: 280px;
     min-height: 800px;
+    background: url("../img/bg-img1.jpg");
 }

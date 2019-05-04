@@ -2,21 +2,22 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	background-color: white;
     
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .top-nav  .navbar-brand{
-    
-    text-transform: uppercase;
-    padding: 19px 15px;
-    color: #212121
+  font-family:  Garamond, sans-serif;
+  text-transform: capitalize;
+  padding: 19px 15px;
+  color: #212121;
+  font-size: 30px;
 }
 
 .top-nav .navbar-nav li .nav-link{
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-transform: uppercase;
-    padding: 19px 15px;
-    color: #212121
+	font-size: 20px;
+  text-transform: capitalize;
+  padding: 19px 15px;
+  color: #212121
 }
 
 .top-nav .navbar-nav li a.nav-link:hover, .top-nav .nav-item.active a.nav-link{
