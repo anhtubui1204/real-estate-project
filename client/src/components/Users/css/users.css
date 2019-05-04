@@ -1,0 +1,61 @@
+.login-section{
+    background: url('../img/house-wallpaper.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 900px;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+}
+.login-section .bg-dark-trans{
+    background-color: #555555;
+}
+.login-section .login-inner{
+    width: 420px;
+    background: rgba(43, 42, 42, 0.692);
+    border-radius: 10px;
+    overflow: hidden;
+   padding: 30px 0;
+}
+.login-section .login-inner .form-title{
+    font-size: 45px;
+    text-align: center;
+    display: block;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding-bottom: 38px;
+    color: white;
+}
+.login-section .login-inner form{
+    background: #47404000;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 0 33px 0;
+}
+.login-section .login-inner .form-group{
+    width: 100%;
+    border-bottom: 1px solid rgb(185, 185, 185);
+    padding: 15px 0;
+}
+.login-section .login-inner input.input-form{
+    border: transparent;
+    background: #ffffff00;
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.2;
+    padding-left: 50px;
+    outline: none;
+    border: none;
+    width: 100%
+}
+.login-section .login-inner .form-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+.login-section .login-inner .signup {
+    text-align: center!important;
+    
+}
