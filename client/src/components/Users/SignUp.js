@@ -7,24 +7,28 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <AppNavbar1 loginActive="nav-item active"/>
+                <AppNavbar1/>
                 <div className="login-section d-flex justify-content-center align-items-center bg-dark-trans">
+                  
                         <div className="login-inner">
-                            <h2 className="form-title">Account Login</h2>
+                            <h2 className="form-title">Register</h2>
                             <form>
+                                <div className="form-group">
+                                    <input className="input-form" type="text" name="name" placeholder="Name of user"/>
+                                </div>
                                 <div className="form-group">
                                     <input className="input-form" type="email" name="email" placeholder="Email"/>
                                 </div>
                                 <div className="form-group">
                                     <input className="input-form" type="password" name="password" placeholder="Password"/>
                                 </div>
+                                <div className="form-group">
+                                    <input className="input-form" type="password" name="password2" placeholder="Please confirm password"/>
+                                </div>
                                 <div className="form-btn">
-                                <button type="submit" className="btn btn-info">Submit</button>
+                                    <button type="submit" className="btn btn-info">Submit</button>
                                 </div>
                             </form>
-                            <div className="signup">
-                                <Link style={{color:"#ffffff"}}>Sign Up</Link>
-                            </div>
                         </div>
                     
                 </div>

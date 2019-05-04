@@ -42,7 +42,7 @@ class HomePage extends Component {
         const AdsListWithLoading = WithLoading(RecentAds);
         return (
             <div>
-                <AppNavbar1/>
+                <AppNavbar1 homeActive={"nav-item active"}/>
                 <div className="header-area">
                     <Banner/>
                     <div className="container">

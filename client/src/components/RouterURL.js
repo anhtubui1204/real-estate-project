@@ -5,7 +5,7 @@ import AdsList from './Ads/AdsList';
 import Projects from './Projects/Projects'
 import Contact from './Contact/Contact';
 import Login from './Users/Login';
-
+import SignUp from './Users/SignUp';
 
 class RouterURL extends Component {
     render() {
@@ -17,6 +17,7 @@ class RouterURL extends Component {
                     <Route exact path='/project' component={Projects} />
                     <Route exact path='/contact' component={Contact} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/signup' component={SignUp} />
                 </Switch>
             </div>
         );

@@ -4,9 +4,11 @@ import { Link, } from "react-router-dom";
 import './navbar.css';
 
 class AppNavbar1 extends Component {
+    
     render() {
+        const {homeActive, adsActive, projectActive, contactActive, loginActive} = this.props
         return (
-              
+            
             <div className="main-menu">
                 <nav className="navbar navbar-expand-md navbar-dark top-nav">
                     <div className="container">
@@ -19,19 +21,19 @@ class AppNavbar1 extends Component {
                     
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <Link className="nav-link" to={"/"}>Home<span className="sr-only">(current)</span></Link>
+                                <li className={homeActive}>
+                                    <Link className="nav-link" to={"/"}>Home</Link>
                                 </li>
-                                <li className="nav-item">
+                                <li className={adsActive}>
                                     <Link className="nav-link" to={"/ads"}>Properties</Link>
                                 </li>
-                                <li className="nav-item">
+                                <li className={projectActive}>
                                     <Link className="nav-link" to={"/project"}>Projects</Link>
                                 </li>
-                                <li className="nav-item">
+                                <li className={contactActive}>
                                     <Link className="nav-link" to={"/contact"}>Contact</Link>
                                 </li>
-                                <li className="nav-item">
+                                <li className={loginActive}>
                                     <Link className="nav-link" to={"/login"}>Login</Link>
                                 </li>
                                 

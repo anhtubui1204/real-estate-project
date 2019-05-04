@@ -6,7 +6,7 @@ class AdsList extends Component {
     render() {
         return (
             <div>
-                <AppNavbar1/>
+                <AppNavbar1 adsActive={"nav-item active"}/>
                 <div>
                     
                 </div>
