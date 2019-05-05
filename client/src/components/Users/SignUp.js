@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import AppNavbar1 from '../layout/AppNavbar1';
 import './css/users.css';
 import {Link} from 'react-router-dom';
-import { urlAds, urlUsers } from '../../myURL';
+import { urlUsers } from '../../myURL';
+import processResponse from '../../utils/ProcessResponse';
+
 
 class Login extends Component {
     constructor() {
         super()
         this.state = {
+            errors:{},
             email:'',
             password:'',
             name:'',
             password2:'',
+            avatar:'',
             loading: false,
             redirect: false
         }
@@ -25,7 +29,7 @@ class Login extends Component {
 
     handleSubmit=(e)=> {
         e.preventDefault();
-        const {email, name, password, password2} = this.state;
+        const {email, name, password, password2, avatar} = this.state;
         fetch(urlUsers +'/register', {
             headers:{
                 'Accept': 'application/json',
@@ -36,17 +40,29 @@ class Login extends Component {
                 email: email,
                 name: name,
                 password: password,
-                password2: password2
+                password2: password2,
+                avatar: avatar,
             })
         })
-        .then(response => {
-            console.log(response.json())
+        .then(processResponse)
+        .then(res=>{
+            console.log(res)
+            const {statusCode, data} = res;
+            if(statusCode === 400){
+                this.setState({errors: data})
+            }
+            if(statusCode === 200){
+                alert("Successfully Registered")
+                this.props.history.push('/')
+                
+            }
         })
-        
-        
-
+        .catch(err=> console.log(err))
     }
+
     render() {
+        const {errors} = this.state;
+        console.log(errors)
         return (
             <div>
                 <AppNavbar1/>
@@ -57,6 +73,9 @@ class Login extends Component {
                             <form>
                                 <div className="form-group">
                                     <input onChange={this.handleChange.bind(this)} className="input-form" type="text" name="name" placeholder="Name of user"/>
+                                </div>
+                                <div className="form-group">
+                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="text" name="avatar" placeholder="Avatar Link"/>
                                 </div>
                                 <div className="form-group">
                                     <input onChange={this.handleChange.bind(this)} className="input-form" type="email" name="email" placeholder="Email"/>
