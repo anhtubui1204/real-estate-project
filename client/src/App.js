@@ -6,9 +6,11 @@ import './App.css';
 // import LoginLogout from './components/Users/LoginLogout';
 import RouterURL from './components/RouterURL';
 import Footer from './components/layout/Footer';
+import localStorageExpire from './javascript-localstorage-expiry';
 
 class App extends Component {
   render() {
+    var expire = localStorageExpire();
     return (
       <Router>
         
