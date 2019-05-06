@@ -4,6 +4,7 @@ import './css/users.css';
 import {Link} from 'react-router-dom';
 import { urlUsers } from '../../myURL';
 import processResponse from '../../utils/ProcessResponse';
+import classnames from 'classnames';
 
 
 class Login extends Component {
@@ -44,12 +45,12 @@ class Login extends Component {
                 avatar: avatar,
             })
         })
-        .then(processResponse)
+        .then(processResponse) //process response with status code
         .then(res=>{
             console.log(res)
-            const {statusCode, data} = res;
+            const {statusCode, json} = res;
             if(statusCode === 400){
-                this.setState({errors: data})
+                this.setState({errors: json})
             }
             if(statusCode === 200){
                 alert("Successfully Registered")
@@ -70,24 +71,59 @@ class Login extends Component {
                   
                         <div className="login-inner">
                             <h2 className="form-title">Register</h2>
-                            <form>
+                            <form onSubmit={this.handleSubmit.bind(this)} noValidate>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="text" name="name" placeholder="Name of user"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.name})}
+                                        type="text" 
+                                        name="name" 
+                                        placeholder="Name of User"                                       
+                                    />
+                                    {errors.name && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.name}</div>)}
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="text" name="avatar" placeholder="Avatar Link"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.avatar})}
+                                        type="text" 
+                                        name="avatar" 
+                                        placeholder="Avatar URL"                                       
+                                    />
+                                    {errors.avatar && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.avatar}</div>)}
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="email" name="email" placeholder="Email"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.email})}
+                                        type="email" 
+                                        name="email" 
+                                        placeholder="Email"                                       
+                                    />
+                                    {errors.email && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.email}</div>)}
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="password" name="password" placeholder="Password"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.password})}
+                                        type="password" 
+                                        name="password" 
+                                        placeholder="Password"                                       
+                                    />
+                                    {errors.password && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.password}</div>)}
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="password" name="password2" placeholder="Please confirm password"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.password2})}
+                                        type="password" 
+                                        name="password2" 
+                                        placeholder="Confirm Password"                                       
+                                    />
+                                    {errors.password2 && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.password2}</div>)}
                                 </div>
                                 <div className="form-btn">
-                                    <button onClick={this.handleSubmit.bind(this)} type="submit" className="btn btn-info">Submit</button>
+                                    <button type="submit" className="btn btn-info">Submit</button>
                                 </div>
                             </form>
                         </div>

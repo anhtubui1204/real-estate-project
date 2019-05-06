@@ -3,6 +3,8 @@ import AppNavbar1 from '../layout/AppNavbar1';
 import './css/users.css';
 import {Link} from 'react-router-dom';
 import CurrentUser from './CurrentUser';
+import processResponse from '../../utils/ProcessResponse';
+import classnames from 'classnames';
 
 class Login extends Component {
     constructor() {
@@ -11,7 +13,8 @@ class Login extends Component {
             email:'',
             password:'',
             success: false,
-            token: ""
+            token: "",
+            errors:{}
         }
     }
 
@@ -23,6 +26,7 @@ class Login extends Component {
 
     handleSubmit=(e)=> {
         e.preventDefault()
+        // e.target.className += " was-validated";
         const{email, password}=this.state;
         const url = '/api/users/login';
         fetch(url, {
@@ -36,37 +40,62 @@ class Login extends Component {
                 password: password
             })
         })
-            .then(res => res.json())
-            .then(json=>{
+        .then(processResponse) //process response with status code
+        .then(res => {
+            console.log(res);
+            const {statusCode, json} = res;
+            if(statusCode === 400){
+                this.setState({errors: json})
+            }
+            if(statusCode === 200){
                 console.log(json)
                 this.setState({
                     success: json.success,
                     token: json.token
                 })
                 localStorage.setItem('jwtToken', json.token)
+                
             }
-                )
-            .catch(err=> console.log(err))
+            }
+        )
+        .catch(err=> console.log(err))
 
 
     }
 
     render() {
+        const {errors} = this.state;
+        console.log(errors)
         return (
+            
             <div>
                 <AppNavbar1 loginActive="nav-item active"/>
                 <div className="login-section d-flex justify-content-center align-items-center bg-dark-trans">
                         <div className="login-inner">
                             <h2 className="form-title">Account Login</h2>
-                            <form>
+                            <form   onSubmit={this.handleSubmit.bind(this)} noValidate>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="email" name="email" placeholder="Email"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.email})}
+                                        type="email" 
+                                        name="email" 
+                                        placeholder="Email"                                       
+                                    />
+                                    {errors.email && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.email}</div>)}
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={this.handleChange.bind(this)} className="input-form" type="password" name="password" placeholder="Password"/>
+                                    <input 
+                                        onChange={this.handleChange.bind(this)} 
+                                        className={classnames("form-control", {'is-invalid': errors.password})} 
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                    />
+                                    {errors.password && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.password}</div>)}
                                 </div>
                                 <div className="form-btn">
-                                <button onClick={this.handleSubmit.bind(this)}  type="submit" className="btn btn-info">Submit</button>
+                                <button type="submit" className="btn btn-info">Submit</button>
                                 </div>
                             </form>
                             <div className="signup">
