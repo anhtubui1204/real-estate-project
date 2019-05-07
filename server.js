@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const passport = require('passport'); //used to authorize the JWT token
+const passport = require('passport'); //used for account authorization with JWT token
 
 const users= require('./routes/api/users');
 const profile = require('./routes/api/profile');
