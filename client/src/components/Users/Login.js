@@ -42,7 +42,6 @@ class Login extends Component {
         })
         .then(processResponse) //process response with status code
         .then(res => {
-            console.log(res);
             const {statusCode, json} = res;
             if(statusCode === 400){
                 this.setState({errors: json})
@@ -51,7 +50,8 @@ class Login extends Component {
                 console.log(json)
                 this.setState({
                     success: json.success,
-                    token: json.token
+                    token: json.token,
+                    errors:{}
                 })
                 localStorage.setItem('jwtToken', json.token)
                 
@@ -65,7 +65,7 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        console.log(errors)
+        // console.log(errors)
         return (
             
             <div>
@@ -102,7 +102,7 @@ class Login extends Component {
                                 <Link to={"/signup"} style={{color:"#ffffff"}}>Sign Up</Link>
                             </div>
                         </div>
-                        <CurrentUser token={this.state.token}/>
+                        {/* <CurrentUser token={this.state.token}/> */}
                 </div>
             </div>
         );

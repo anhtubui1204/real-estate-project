@@ -4,9 +4,24 @@ import { Link, } from "react-router-dom";
 import './navbar.css';
 
 class AppNavbar1 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          isAuth: false
+        };
+        
+      }
+
+    signOut=(e)=> {
+        e.preventDefault();
+        localStorage.removeItem('jwtToken')
+        alert('Successfully Logged out')
+        this.setState({isAuth: false})
+    }
     
     render() {
         const {homeActive, adsActive, projectActive, contactActive, loginActive} = this.props
+
         return (
             
             <div className="main-menu">
@@ -36,7 +51,17 @@ class AppNavbar1 extends Component {
                                 <li className={loginActive}>
                                     <Link className="nav-link" to={"/login"}>Login</Link>
                                 </li>
-                                
+                                <li className="nav-item dropdown">
+                                    <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Your Account
+                                    </div>
+                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <Link className="dropdown-item" to={"/profile"}>Your Profile</Link>
+                                        <Link className="dropdown-item" to={"/"}>Your Ads/Projects</Link>
+                                        <div className="dropdown-divider" />
+                                        <div className="dropdown-item" onClick={this.signOut.bind(this)}>Sign Out</div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>	
                     </div>

@@ -1,6 +1,6 @@
-// Reset when storage is more than 3hours
+// Reset when storage is more than 1 hour
 export default function localStorageExpire(){
-var hours = 3; 
+var hours = 1; 
 var now = new Date().getTime();
 var setupTime = localStorage.getItem('setupTime');
 if (setupTime == null) {

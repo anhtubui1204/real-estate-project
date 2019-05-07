@@ -20,7 +20,7 @@
   color: #212121
 }
 
-.top-nav .navbar-nav li a.nav-link:hover, .top-nav .nav-item.active a.nav-link{
+.top-nav .navbar-nav li .nav-link:hover, .top-nav .nav-item.active a.nav-link, .top-nav .nav-item.dropdown.show .nav-link{
     border-bottom: 3px solid #947054;
     color: #947054;
     transition: 0.5s ease-in;
