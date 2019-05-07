@@ -10,7 +10,7 @@ import localStorageExpire from './javascript-localstorage-expiry';
 
 class App extends Component {
   render() {
-    var expire = localStorageExpire();
+    localStorageExpire();
     return (
       <Router>
         

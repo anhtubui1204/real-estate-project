@@ -122,6 +122,7 @@ router.post('/', auth, (req, res)=> {
     if(req.body.location) profileFields.location = req.body.location;
     if(req.body.status) profileFields.status = req.body.status;
     if(req.body.bio) profileFields.bio = req.body.bio;
+    if(req.body.phone) profileFields.phone = req.body.phone;
 
     //Social
     profileFields.social={};

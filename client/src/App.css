@@ -11,6 +11,10 @@ body {
 
 }
 
+ul li {
+  list-style: none;
+}
+
 a{
   color: #333;
   text-decoration: none;
@@ -22,7 +26,18 @@ a{
   }
 }
 
+.py_80{
+  padding: 80px 0px
+}
 
+.full_width{
+  position: relative;
+  width: 100%;
+}
+
+.bg_milk{
+  background-color: #e2e2e2
+}
 
 /* button */
 .btn{
@@ -57,6 +72,10 @@ a{
   border: 2px solid #2866AB;
   background: #fff;
   color: #2866AB;
+}
+
+.navbar-toggler{
+  background-color: rgba(0, 0, 0, 0.712)
 }
 
 /* Slider */
@@ -95,5 +114,14 @@ a{
 .loading-area{
   height: 200px;
   padding: 100px 0;
-  position: relative
+  position: relative;
+  height: 100%;
+}
+
+
+/* Image */
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

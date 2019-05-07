@@ -4,6 +4,7 @@ import { urlProfile } from '../../myURL';
 import processResponse from '../../utils/ProcessResponse';
 import WithLoading from '../../utils/WithLoading';
 import ViewProfile from './ViewProfile';
+import './css/users.css';
 
 class Profile extends Component {
     constructor() {
@@ -50,12 +51,22 @@ class Profile extends Component {
     render() {
         const{profile, errors, loading}=this.state;
         const ProfileWithLoading = WithLoading(ViewProfile)
-        console.log(errors)
+        
         return (
             <div>
                 <AppNavbar1/>
+                <div className="py_80 bg_milk full_width">
                 <div className="container">
-                    <ProfileWithLoading isLoading={loading} errors={errors} profile={profile}/>
+                    <header className="header-section d-flex justify-content-center">
+                        <h2 className="title">
+                            My Profile
+                        </h2>
+                    </header>
+                    <div className="display-profile d-flex justify-content-center">
+                        <ProfileWithLoading isLoading={loading} errors={errors} profile={profile}/>
+                    </div>
+                </div>
+                
                 </div>
             </div>
         );

@@ -54,7 +54,8 @@ class Login extends Component {
                     errors:{}
                 })
                 localStorage.setItem('jwtToken', json.token)
-                
+                this.props.history.push('/')
+                alert('Login Successful')
             }
             }
         )

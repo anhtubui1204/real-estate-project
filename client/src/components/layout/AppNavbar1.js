@@ -17,11 +17,29 @@ class AppNavbar1 extends Component {
         localStorage.removeItem('jwtToken')
         alert('Successfully Logged out')
         this.setState({isAuth: false})
+        
     }
     
     render() {
         const {homeActive, adsActive, projectActive, contactActive, loginActive} = this.props
-
+        const Login = (
+            <li className={loginActive}>
+                <Link className="nav-link" to={"/login"}>Login</Link>
+            </li>
+        )
+        const Account = (
+            <li className="nav-item dropdown">
+                <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Your Account
+                </div>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <Link className="dropdown-item" to={"/profile"}>Your Profile</Link>
+                    <Link className="dropdown-item" to={"/"}>Your Ads/Projects</Link>
+                    <div className="dropdown-divider" />
+                    <div className="dropdown-item" onClick={this.signOut.bind(this)}>Sign Out</div>
+                </div>
+            </li>
+        )
         return (
             
             <div className="main-menu">
@@ -48,20 +66,7 @@ class AppNavbar1 extends Component {
                                 <li className={contactActive}>
                                     <Link className="nav-link" to={"/contact"}>Contact</Link>
                                 </li>
-                                <li className={loginActive}>
-                                    <Link className="nav-link" to={"/login"}>Login</Link>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Your Account
-                                    </div>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link className="dropdown-item" to={"/profile"}>Your Profile</Link>
-                                        <Link className="dropdown-item" to={"/"}>Your Ads/Projects</Link>
-                                        <div className="dropdown-divider" />
-                                        <div className="dropdown-item" onClick={this.signOut.bind(this)}>Sign Out</div>
-                                    </div>
-                                </li>
+                                {localStorage.getItem('jwtToken')? Account : Login}
                             </ul>
                         </div>	
                     </div>

@@ -25,6 +25,10 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: Number,
+        required: true
+    },
     bio: {
         type: String
     },

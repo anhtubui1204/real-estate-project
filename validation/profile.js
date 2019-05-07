@@ -7,6 +7,7 @@ module.exports = function validateProfileInput(data){
     //Convert all the value of null or undifined into a string of null
     data.handle = !isEmpty(data.handle)? data.handle : '';
     data.status = !isEmpty(data.status)? data.status : '';
+    data.phone = !isEmpty(data.phone)? data.phone : '';
    
     if(!Validator.isLength(data.handle, {min:2, max:40})){
         errors.handle = 'Handle need to be between 2 and 40 characters'
@@ -15,6 +16,12 @@ module.exports = function validateProfileInput(data){
         errors.handle = 'Handle field is required';
     }
    
+    if (!Validator.isMobilePhone(data.phone, 'vi-VN', true)){
+        errors.phone = 'invalid phone number';
+    }
+    if (Validator.isEmpty(data.phone)){
+        errors.phone = 'Phone number field is required';
+    }
 
     if (Validator.isEmpty(data.status)){
         errors.status = 'Status field is required';

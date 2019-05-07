@@ -10,17 +10,11 @@ module.exports = function validateAdsInput(data){
     data.areaSqm = !isEmpty(data.areaSqm)? data.areaSqm : '';
     data.nBedRooms = !isEmpty(data.nBedRooms)? data.nBedRooms : '';
     data.nFloors = !isEmpty(data.nFloors)? data.nFloors : '';
-    data.direction = !isEmpty(data.direction)? data.direction : '';
     data.name = !isEmpty(data.name)? data.name : '';
     data.phone = !isEmpty(data.phone)? data.phone : '';
     data.imageMain = !isEmpty(data.imageMain)? data.imageMain : '';
-    data.street = !isEmpty(data.street)? data.street : '';
-    data.district = !isEmpty(data.district)? data.district : '';
-    data.city = !isEmpty(data.city)? data.city : '';
-    data.image1 = !isEmpty(data.image1)? data.image1 : '';
-    data.image2 = !isEmpty(data.image2)? data.image2 : '';
-    data.image3 = !isEmpty(data.image3)? data.image3 : '';
-   
+    
+    
     if (Validator.isEmpty(data.name)){
         errors.name = 'Name field is required';
     }

@@ -51,7 +51,6 @@
     border-radius: 0;
     height: 100%;
 }
-
 .login-section .login-inner .form-btn{
     width: 100%;
     display: flex;
@@ -61,5 +60,47 @@
 }
 .login-section .login-inner .signup {
     text-align: center!important;
-    
+}
+
+/* Profile */
+.header-section{
+    padding-bottom: 40px;
+}
+.header-section .title{
+    text-transform: uppercase;
+    font-weight: bolder
+}
+
+.view-profile{
+    height: 100%;
+    max-width: 1200px;
+}
+.view-profile ul li {
+    border-bottom: 1px solid #000000;
+    padding: 15px 0px;
+}
+.view-profile ul li span {
+    color: #818181;
+    padding-right: 5px;
+}
+.view-profile .profile-img{
+    position: relative;
+}.view-profile .social-section{
+    padding: 48px 0px;
+}
+.view-profile .social-section .social-media-wrap{
+    position: relative;
+}
+.view-profile .social-section .social-media-wrap h2{
+    display: inline-block;
+    text-transform: capitalize
+}
+.view-profile .social-section .social-media-wrap .social-li{
+    display: inline-block;
+    position: relative;
+    margin-left: 40px;
+}
+.view-profile .social-section .social-media-wrap .social-li a{
+    font-size: 35px;
+    margin-right: 45px;
 }
