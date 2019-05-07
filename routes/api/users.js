@@ -29,7 +29,7 @@ router.get('/test',(req, res)=> {
 //Test users Registration
 //@ access public
 router.post('/register', (req, res)=> {
-
+    
     const{errors, isValid} = validateRegisterInput(req.body);
 
     //Check Validation
