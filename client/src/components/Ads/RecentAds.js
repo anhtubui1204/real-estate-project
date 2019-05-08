@@ -24,9 +24,9 @@ class RecentAds extends Component {
             />
         )
         )
-        const listAdsSorted = adsList.sort((a,b)=>{
+        // const listAdsSorted = adsList.sort((a,b)=>{
 
-        })
+        // })
         return (
 
             <div className="properties-area">
