@@ -8,6 +8,7 @@ import Login from './Users/Login';
 import SignUp from './Users/SignUp';
 import Profile from './Users/Profile';
 import { PrivateRoute } from '../utils/PrivateRoute';
+import AddEditProfile from '../components/Users/AddEditProfile'
 
 class RouterURL extends Component {
     render() {
@@ -21,6 +22,7 @@ class RouterURL extends Component {
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={SignUp} />
                     <PrivateRoute exact path='/profile' component={Profile} />
+                    <PrivateRoute exact path='/addprofile' component={AddEditProfile}/>
                 </Switch>
             </div>
         );

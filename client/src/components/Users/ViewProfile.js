@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/users.css'
+import {Link} from 'react-router-dom'
 
 class ViewProfile extends Component {
     render() {
@@ -87,7 +88,21 @@ class ViewProfile extends Component {
             </div>
             )
         ) : (
-            <div>{errors.noprofile}</div>
+            <div className="alert-section">
+                <div className="alert alert-danger">
+                    <h4>{errors.noprofile}</h4>
+                    <div className="add-profile">
+                        <span style={{padding:"0px 5px", color:"gray"}}>please add profile here</span>
+                        <Link to={{
+                            pathname:'/addprofile',
+                            state:{
+                                errors: errors
+                            }
+                        }}><span className="badge badge-pill badge-light">Add Profile</span></Link> 
+                    </div>
+                </div>
+                
+            </div>
         )
 
         return (
