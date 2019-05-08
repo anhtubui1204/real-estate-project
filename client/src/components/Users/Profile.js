@@ -19,7 +19,7 @@ class Profile extends Component {
 
     fetchProfile=()=>{
         const localToken = localStorage.getItem('jwtToken')
-        console.log(localToken)
+        
         fetch(urlProfile, {
             headers:{
                 'Authorization': localToken
@@ -31,7 +31,7 @@ class Profile extends Component {
             if(statusCode !== 200){
                 this.setState({errors: json})
             } else {
-                console.log(json)
+                
                 this.setState({
                     profile: json
                 })

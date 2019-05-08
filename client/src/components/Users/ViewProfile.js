@@ -5,8 +5,6 @@ import {Link} from 'react-router-dom'
 class ViewProfile extends Component {
     render() {
         const {profile, errors}=this.props
-        console.log(profile)
-        console.log(errors)
 
         var profileDisplay = (!errors || (typeof errors ==='object' && Object.keys(errors).length===0))? (
 
@@ -28,7 +26,7 @@ class ViewProfile extends Component {
                                         <span>Name: </span> {profile.user.name}
                                     </li>
                                     <li>
-                                        <span>Phone: </span> +{profile.phone}
+                                        <span>Phone: </span> {profile.phone}
                                     </li>
                                     <li>
                                         <span>Status: </span> {profile.status}
@@ -53,7 +51,12 @@ class ViewProfile extends Component {
                         </div>
                     </div>
                     <div className="edit-btn">
-                        <button className="btn btn-dark">Edit Profile</button>
+                        <Link to = {{
+                            pathname: '/addprofile',
+                            state:{
+                                profile: profile
+                            }
+                        }}><button className="btn btn-dark">Edit Profile</button></Link>
                     </div>
                 </div>
                 

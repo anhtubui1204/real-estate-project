@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppNavbar1 from '../layout/AppNavbar1';
 import './css/users.css';
-import {Link} from 'react-router-dom';
+
 import { urlUsers } from '../../myURL';
 import processResponse from '../../utils/ProcessResponse';
 import classnames from 'classnames';
@@ -63,7 +63,7 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        console.log(errors)
+        
         return (
             <div>
                 <AppNavbar1/>
