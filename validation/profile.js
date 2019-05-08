@@ -8,6 +8,10 @@ module.exports = function validateProfileInput(data){
     data.handle = !isEmpty(data.handle)? data.handle : '';
     data.status = !isEmpty(data.status)? data.status : '';
     data.phone = !isEmpty(data.phone)? data.phone : '';
+    data.website = !isEmpty(data.website)? data.website : '';
+    data.company = !isEmpty(data.company)? data.company : '';
+    data.location = !isEmpty(data.location)? data.location : '';
+    data.bio = !isEmpty(data.bio)? data.bio : '';
    
     if(!Validator.isLength(data.handle, {min:2, max:40})){
         errors.handle = 'Handle need to be between 2 and 40 characters'

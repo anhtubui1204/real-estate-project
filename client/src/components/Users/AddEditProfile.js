@@ -1,10 +1,83 @@
 import React, { Component } from 'react';
 import AppNavbar1 from '../layout/AppNavbar1';
 import './css/users.css'
+import classnames from 'classnames';
+import { urlProfile } from '../../myURL';
+import processResponse from '../../utils/ProcessResponse';
 
 class AddEditProfile extends Component {
+    constructor() {
+        super()
+        this.state = {
+            handle:'',
+            company:'',
+            website: '',
+            location: '',
+            status:'',
+            phone:'',
+            bio:'',
+            youtube:'',
+            twitter:'',
+            facebook:'',
+            linkedIn:'',
+            instagram:'',
+
+            errors:{}
+        }
+    }
+
+    handleChange=(e)=>{
+        let obj = {}
+        obj[e.target.name] = e.target.value
+        this.setState(obj)
+    }
+
+    handleSubmit=(e)=> {
+        e.preventDefault();
+        const localToken = localStorage.getItem('jwtToken')
+        const {handle, company, website, location, status, phone, bio, youtube, twitter, facebook, linkedIn, instagram} = this.state;
+        fetch(urlProfile, {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': localToken
+            },
+            method: 'post',
+            body: JSON.stringify({
+                handle: handle,
+                company: company,
+                website: website,
+                location: location,
+                status: status,
+                phone: phone,
+                bio: bio,
+                youtube: youtube,
+                twitter: twitter,
+                facebook: facebook,
+                linkedIn: linkedIn,
+                instagram: instagram
+            })
+        })
+        .then(processResponse) //process response with status code
+        .then(res=>{
+            console.log(res)
+            const {statusCode, json} = res;
+            if(statusCode !== 200){
+                this.setState({errors: json})
+            }
+            if(statusCode === 200){
+                alert("Successfully Registered")
+                this.props.history.push('/profile')
+                
+            }
+        })
+        .catch(err=> console.log(err))
+    }
+
     render() {
-        console.log(this.props.location.state)
+        const{errors} = this.state;
+        console.log(errors)
+
         return (
             <div>
                 <AppNavbar1/>
@@ -16,43 +89,72 @@ class AddEditProfile extends Component {
                         </h2>
                     </header>
                     <div className="add-profile-form d-flex justify-content-center">
-                        <form>
+                        <form onSubmit={this.handleSubmit.bind(this)} noValidate>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="inputEmail4">Email</label>
-                                    <input type="email" className="form-control" id="inputEmail4" placeholder="Email" />
+                                    <label htmlFor="inputHandle">Handle <span>*</span></label>
+                                    <input onChange={this.handleChange.bind(this)}  name="handle" type="text" className={classnames("form-control", {'is-invalid': errors.handle})} id="inputHandle" placeholder="Handle"/>
+                                    {errors.handle && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.handle}</div>)}
+                                </div>
+                                <div className="form-group col-md-3">
+                                    <label htmlFor="inputStatus">Status <span>*</span></label>
+                                    <input onChange={this.handleChange.bind(this)}  name="status" type="text" className={classnames("form-control", {'is-invalid': errors.status})} id="inputStatus" placeholder="Status" />
+                                    {errors.status && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.status}</div>)}
+                                </div>
+                                <div className="form-group col-md-3">
+                                    <label htmlFor="inputPhone">Phone <span>*</span></label>
+                                    <input onChange={this.handleChange.bind(this)}  name="phone" type="text" className={classnames("form-control", {'is-invalid': errors.phone})} id="inputPhone" placeholder="Phone required to begin with +" />
+                                    {errors.phone && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.phone}</div>)}
+                                </div>
+                                
+                            </div>
+
+                            <div className="form-row">
+                                <div className="form-group col-md-6">
+                                    <label htmlFor="inputCompany">Company</label>
+                                    <input onChange={this.handleChange.bind(this)}  name="company" type="text" className="form-control" id="inputCompany" placeholder="Company" />
                                 </div>
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="inputPassword4">Password</label>
-                                    <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
+                                    <label htmlFor="inputWebsite">Website</label>
+                                    <input onChange={this.handleChange.bind(this)}  name="website" type="text" className="form-control" id="inputWebsite" placeholder="Company" />
                                 </div>
                             </div>
+
                             <div className="form-group">
                                 <label htmlFor="inputAddress">Address</label>
-                                <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                                <input onChange={this.handleChange.bind(this)}  name="location" type="text" className="form-control" id="inputAddress" placeholder="Company Address" />
                             </div>
+
                             <div className="form-group">
-                                <label htmlFor="inputAddress2">Address 2</label>
-                                <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+                                <label htmlFor="inputBio">Bio</label>
+                                <textarea onChange={this.handleChange.bind(this)}  name="bio" type="textarea" className="form-control" id="inputBio" placeholder="Your Bio"></textarea>
                             </div>
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="inputCity">City</label>
-                                    <input type="text" className="form-control" id="inputCity" />
+
+                            <label htmlFor="inputSocialLinks">Social Links</label>
+                            <div className="form-row" id="inputSocialLinks">
+                                <div className="form-group col-md-4">
+                                    <input onChange={this.handleChange.bind(this)}  name="linkedIn" type="text" className={classnames("form-control", {'is-invalid': errors.linkedIn})} id="inputHandle" placeholder="LinkedIn"/>
+                                    {errors.linkedIn && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.linkedIn}</div>)}
                                 </div>
                                 <div className="form-group col-md-4">
-                                    <label htmlFor="inputState">State</label>
-                                    <select id="inputState" className="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                    </select>
+                                    <input onChange={this.handleChange.bind(this)}  name="facebook" type="text" className={classnames("form-control", {'is-invalid': errors.facebook})} id="inputStatus" placeholder="Facebook" />
+                                    {errors.facebook && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.facebook}</div>)}
                                 </div>
-                                <div className="form-group col-md-2">
-                                    <label htmlFor="inputZip">Zip</label>
-                                    <input type="text" className="form-control" id="inputZip" />
+                                <div className="form-group col-md-4">
+                                    <input onChange={this.handleChange.bind(this)}  name="twitter" type="text" className={classnames("form-control", {'is-invalid': errors.twitter})} id="inputPhone" placeholder="Twitter" />
+                                    {errors.twitter && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.twitter}</div>)}
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input onChange={this.handleChange.bind(this)}  name="youtube" type="text" className={classnames("form-control", {'is-invalid': errors.youtube})} id="inputPhone" placeholder="YouTube" />
+                                    {errors.youtube && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.youtube}</div>)}
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input onChange={this.handleChange.bind(this)}  name="instagram" type="text" className={classnames("form-control", {'is-invalid': errors.instagram})} id="inputPhone" placeholder="Instagram" />
+                                    {errors.instagram && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.instagram}</div>)}
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Sign in</button>
+
+                            <button type="submit" className="btn btn-primary">Add Profile</button>
                         </form>
                     </div>
                 </div>

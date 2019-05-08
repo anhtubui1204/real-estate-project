@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar1 from '../layout/AppNavbar1';
 import './css/users.css';
 import {Link} from 'react-router-dom';
-import CurrentUser from './CurrentUser';
+
 import processResponse from '../../utils/ProcessResponse';
 import classnames from 'classnames';
 

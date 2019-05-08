@@ -52,6 +52,9 @@ class ViewProfile extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="edit-btn">
+                        <button className="btn btn-dark">Edit Profile</button>
+                    </div>
                 </div>
                 
                 <div className="col-5 col-sm-5 col-md-5 col-lg-4">
@@ -64,23 +67,37 @@ class ViewProfile extends Component {
                         <div className="container-fluid">
                             <div className="social-media-wrap">
                                 <h2>my social profiles</h2>
-                                <div className="social-li">
-                                    <a href={profile.social.linkedIn}>
+                                {(!profile.social)? (
+                                    <p>No Social Links</p>
+                                ): (
+                                    <div className="social-li">
+                                    {profile.social.linkedIn && (
+                                        <a href={profile.social.linkedIn}>
                                         <i className="fab fa-linkedin"></i>
                                     </a>
-                                    <a href={profile.social.facebook}>
-                                    <i className="fab fa-facebook"></i>
-                                    </a>
-                                    <a href={profile.social.twitter}>
-                                        <i className="fab fa-twitter"></i>
-                                    </a>
-                                    <a href={profile.social.youtube}>
-                                        <i className="fab fa-youtube"></i>
-                                    </a>
-                                    <a href={profile.social.instagram}>
-                                        <i className="fab fa-instagram"></i>
-                                    </a>
+                                    )}
+                                    {profile.social.facebook && (
+                                        <a href={profile.social.facebook}>
+                                         <i className="fab fa-facebook"></i>
+                                        </a>
+                                    )}
+                                    {profile.social.twitter && (
+                                         <a href={profile.social.twitter}>
+                                         <i className="fab fa-twitter"></i>
+                                     </a>
+                                    )}
+                                   {profile.social.youtube && (
+                                       <a href={profile.social.youtube}>
+                                       <i className="fab fa-youtube"></i>
+                                   </a>
+                                   )}
+                                   {profile.social.instagram && (
+                                       <a href={profile.social.instagram}>
+                                       <i className="fab fa-instagram"></i>
+                                   </a>
+                                   )}
                                 </div>
+                                )}
                             </div>
                         </div>
                     </div>
