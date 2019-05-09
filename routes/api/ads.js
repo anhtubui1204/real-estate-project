@@ -9,6 +9,7 @@ const auth = passport.authenticate('jwt', {session: false});
 //Load Model
 const Project = require('../../models/Project');
 const Ads = require('../../models/Ads');
+mongoose.set('useFindAndModify', true);
 
 //Load Validator
 const validateAdsInput = require('../../validation/ads');

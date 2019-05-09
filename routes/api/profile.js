@@ -9,6 +9,7 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Project = require('../../models/Project');
 const Ads = require('../../models/Ads');
+mongoose.set('useFindAndModify', true);
 
 //Load validator
 const validateProfileInput = require('../../validation/profile');

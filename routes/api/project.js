@@ -12,6 +12,7 @@ const Project = require('../../models/Project');
 
 //Load Validation
 const validateProjectInput = require('../../validation/project');
+mongoose.set('useFindAndModify', true);
 
 
 //@ route GET api/project/test
