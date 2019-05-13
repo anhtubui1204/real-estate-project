@@ -30,7 +30,7 @@ class SingleAds extends Component {
                                 <span>{area} m2</span>
                             </li>
                             <li>
-                                Bed Rooms
+                                <i className="fas fa-bed"></i>
                                 <span>{nBedRoom}</span>
                             </li>
                             <li>

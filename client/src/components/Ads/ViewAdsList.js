@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './css/ads.css';
 import SingleAds from './SingleAds';
+import './css/ads.css';
 
-class RecentAds extends Component {
+class ViewAdsList extends Component {
     render() {
         const {adsList} = this.props
+
         
         var listAds = (!adsList || !adsList.length)? (
             <p>No Ads, sorry</p>
@@ -20,27 +21,18 @@ class RecentAds extends Component {
                 area={ads.areaSqm}
                 nBedRoom={ads.nBedRooms}
                 nFloor = {ads.nFloors}
-                className={"col-12 col-sm-12 col-md-12 col-lg-6 ads-col"}
+                className={"col-12 col-sm-12 col-md-4 col-lg-4 ads-col"}
             />
         )
         )
-        // const listAdsSorted = adsList.sort((a,b)=>{
 
-        // })
         return (
-
-            <div className="properties-area">
-                <div className="container">
-                    <div className="title">
-                        <h1>most recent ads</h1>
-                    </div>
-                    <div className="row d-flex justify-content-center">
-                        {listAds}
-                    </div>
-                </div>
+            
+            <div className="row d-flex justify-content-center">
+                {listAds}
             </div>
         );
     }
 }
 
-export default RecentAds;
+export default ViewAdsList;
