@@ -23,11 +23,34 @@ class AdsList extends Component {
         }
     }
 
+    handleSearch=(e)=>{
+        e.preventDefault();
+        const {adsList, searchArea, searchBed, searchName, searchPrice, searchProjectName} = this.state;
+        this.setState({
+            adsList:[...adsList]
+                .filter(
+                    ads=>
+                    ads.title.toLowerCase().indexOf(searchName.toLowerCase())!==-1
+                    &&
+                    ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1
+                    &&
+                    ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
+                )
+        })
+    }
+
     handleChange=(e)=>{
         let obj = {}
         obj[e.target.name] = e.target.value
         this.setState(obj)
     }
+
+    handleRefresh=(e)=>{
+        e.preventDefault();
+        this.setState({loading: true})
+        this.fetchAds()
+    }
+
 
     setPage=(a)=> { 
         this.setState({numPage: a})
@@ -48,16 +71,15 @@ class AdsList extends Component {
 
     render() {
         const {adsList, n_ads_per_page, numPage, loading} = this.state;
-
+        
         const adsListPaginated = pagination(adsList, n_ads_per_page, numPage);
-        console.log(adsListPaginated)
         const {paginatedList, pages} = adsListPaginated;
         var btnPages = pages.map(page=> (
             <button key={page} type="button" className="btn btn-light"  onClick={this.setPage.bind(this, page)}>{page}.</button>
         ))
 
         const ViewAdsWithLoading = WithLoading(ViewAdsList);
-        
+
         return (
             <div className="ads-list">
                 <AppNavbar1 adsActive={"nav-item active"}/>
@@ -72,7 +94,7 @@ class AdsList extends Component {
                 <div className="search-bar">
                     <div className="container">
                         <div className="search-form">
-                            <form>
+                            <form >
                                 <div className="row">
                                     <div className="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <input
@@ -114,14 +136,15 @@ class AdsList extends Component {
                                     <div className="col-12 col-sm-6 col-md-6 col-lg-6">
                                     <div className="filter-range"> 
                                         <div className="form-group ">
-                                            <label htmlFor="priceRange">Price Range</label>
+                                            <label htmlFor="priceRange">Area Range</label>
                                             <input type="range" className="slider" min="0" max="5" defaultValue="0" step="0.5" id="priceRange"/>
                                         </div>
                                     </div>
                                     </div>
                                 </div>
                                 <div className="btn-area">
-                                    <button className="btn btn-search">SEARCH</button>
+                                    <button onClick={this.handleSearch.bind(this)} className="btn btn-search">SEARCH</button>
+                                    <button onClick={this.handleRefresh.bind(this)} className="btn btn-refresh"><i className="fas fa-sync"></i></button>
                                 </div>
                             </form>
                         </div>

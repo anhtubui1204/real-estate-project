@@ -74,6 +74,20 @@ a{
   color: #2866AB;
 }
 
+.btn-refresh{
+  border-radius: 0;
+  border: 3px solid #423d3a;
+  background: #423d3a;
+  color: #fff;
+}
+
+.btn-refresh:hover{
+  border-radius: 0;
+  border: 3px solid #423d3a;
+  background: #fff;
+  color: #423d3a;
+}
+
 .navbar-toggler{
   background-color: rgba(0, 0, 0, 0.712)
 }
