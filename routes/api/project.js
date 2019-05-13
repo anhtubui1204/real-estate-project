@@ -75,7 +75,8 @@ router.post('/', auth, (req,res)=> {
         if(projects.length === 0){
             newProject.save().then(project=> res.json(project))
         } else {
-            projects.findOne({projectHandle: req.body.projectHandle})
+            
+            Project.findOne({projectHandle: req.body.projectHandle})
                 .then(project=> {
                     if(project){
                         if(project){

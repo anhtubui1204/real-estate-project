@@ -9,15 +9,15 @@ module.exports = function validateAdsInput(data){
     data.price = !isEmpty(data.price)? data.price : '';
     data.areaSqm = !isEmpty(data.areaSqm)? data.areaSqm : '';
     data.nBedRooms = !isEmpty(data.nBedRooms)? data.nBedRooms : '';
+    
     data.nFloors = !isEmpty(data.nFloors)? data.nFloors : '';
     data.name = !isEmpty(data.name)? data.name : '';
     data.phone = !isEmpty(data.phone)? data.phone : '';
     data.imageMain = !isEmpty(data.imageMain)? data.imageMain : '';
+    data.image1 = !isEmpty(data.image1)? data.image1 : '';
+    data.image2 = !isEmpty(data.image2)? data.image2 : '';
+    data.image3 = !isEmpty(data.image3)? data.image3 : '';
     
-    
-    if (Validator.isEmpty(data.name)){
-        errors.name = 'Name field is required';
-    }
 
     if (!Validator.isLength(data.title, {min: 2, max: 30})){
         errors.title = 'Title must be between 2 and 30 characters';
@@ -26,44 +26,45 @@ module.exports = function validateAdsInput(data){
         errors.title = 'Title field is required';
     }
 
-    if (Validator.isEmpty(data.price)){
-        errors.price = 'Area field is required';
-    }
     if (!Validator.isFloat(data.price)){
         errors.price = 'Area must be Number';
     }
-
-    if (Validator.isEmpty(data.areaSqm)){
-        errors.areaSqm = 'Area field is required';
+    if (Validator.isEmpty(data.price)){
+        errors.price = 'Area field is required';
     }
+    
     if (!Validator.isFloat(data.areaSqm)){
         errors.areaSqm = 'Area must be Number';
     }
-    
-    if (Validator.isEmpty(data.nBedRooms)){
-        errors.nBedRooms = 'Number of Bed Rooms field is required';
+    if (Validator.isEmpty(data.areaSqm)){
+        errors.areaSqm = 'Area field is required';
     }
+    
     if (!Validator.isFloat(data.nBedRooms)){
         errors.nBedRooms = 'Number of Bed Rooms must be Number';
     }
-
-    if (Validator.isEmpty(data.nFloors)){
-        errors.nFloors = 'Number of floors field is required';
+    if (Validator.isEmpty(data.nBedRooms)){
+        errors.nBedRooms = 'Number of Bed Rooms field is required';
     }
+    
     if (!Validator.isFloat(data.nFloors)){
         errors.nFloors = 'Number of floors must be Number';
     }
- 
+    if (Validator.isEmpty(data.nFloors)){
+        errors.nFloors = 'Number of floors field is required';
+    }
+    
     if (Validator.isEmpty(data.name)){
         errors.name = 'Contact name field is required';
     }
 
-    if (Validator.isEmpty(data.phone)){
-        errors.phone = 'Phone number field is required';
-    }
     if (!Validator.isMobilePhone(data.phone, 'vi-VN', true)){
         errors.phone = 'invalid phone number';
     }
+    if (Validator.isEmpty(data.phone)){
+        errors.phone = 'Phone number field is required';
+    }
+    
 
     if (Validator.isEmpty(data.imageMain)){
         errors.imageMain = 'URL for Main Image is required';
@@ -90,9 +91,6 @@ module.exports = function validateAdsInput(data){
             errors.image3 = 'Invalid URL'
         }
     }
-    
-
-   
 
     return {
         errors,

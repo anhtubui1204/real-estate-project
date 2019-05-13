@@ -22,7 +22,7 @@ a{
 
 @media (min-width: 1200px){
   .container {
-    max-width: 1400px;
+    max-width: 1200px;
   }
 }
 
@@ -123,5 +123,9 @@ a{
 .img-responsive{
   display: block;
   max-width: 100%;
-  height: auto;
+  
+}
+
+img{
+  object-fit: cover;
 }
