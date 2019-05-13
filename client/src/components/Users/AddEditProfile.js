@@ -172,7 +172,7 @@ class AddEditProfile extends Component {
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn btn-primary">Add Profile</button>
+                            <button type="submit" className="btn btn-primary">Save Profile</button>
                         </form>
                     </div>
                 </div>
