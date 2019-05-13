@@ -136,8 +136,19 @@
     border-radius: 0;
     margin-bottom: 20px;
 }
+.ads-list .form-group label{
+    margin-bottom: 0.25rem
+}
+.ads-list .range-wrapper{
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+.ads-list .range-wrapper span{
+    color: gray;
+    font-style: italic
+}
 .ads-list .search-bar .btn-area{
-    margin-top: 10px;
+    margin-top: 18px;
 }
 .ads-list .properties-area{
     padding: 100px 0px;

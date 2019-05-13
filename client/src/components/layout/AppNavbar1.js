@@ -45,7 +45,7 @@ class AppNavbar1 extends Component {
             
             <div className="main-menu">
                 <nav className="navbar navbar-expand-md navbar-dark top-nav">
-                    <div className="container">
+                    <div className="container-fluid">
                         <a className="navbar-brand" href="/"><strong>Real Estate</strong></a>
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

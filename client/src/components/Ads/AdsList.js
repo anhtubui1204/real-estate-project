@@ -5,6 +5,7 @@ import { urlAds } from '../../myURL';
 import pagination from '../../utils/pagination';
 import WithLoading from '../../utils/WithLoading'
 import ViewAdsList from './ViewAdsList';
+import numFormatter from '../../utils/numFormatter';
 
 class AdsList extends Component {
     constructor() {
@@ -14,11 +15,12 @@ class AdsList extends Component {
            adsList:[],
            searchName:'',
            searchProjectName:'',
-           searchPrice:'',
-           searchArea:'',
+           searchPrice: 1000000,
+           searchArea:3000,
            searchBed:'',
            n_ads_per_page: 6,
-           numPage: 1
+           numPage: 1,
+           
 
         }
     }
@@ -35,6 +37,10 @@ class AdsList extends Component {
                     ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1
                     &&
                     ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
+                    &&
+                    parseInt(ads.price)<searchPrice
+                    &&
+                    parseInt(ads.areaSqm)<searchArea
                 )
         })
     }
@@ -70,14 +76,16 @@ class AdsList extends Component {
     }
 
     render() {
-        const {adsList, n_ads_per_page, numPage, loading} = this.state;
+        const {adsList, n_ads_per_page, numPage, loading, searchArea, searchPrice} = this.state;
         
+        //load Pagination
         const adsListPaginated = pagination(adsList, n_ads_per_page, numPage);
         const {paginatedList, pages} = adsListPaginated;
         var btnPages = pages.map(page=> (
             <button key={page} type="button" className="btn btn-light"  onClick={this.setPage.bind(this, page)}>{page}.</button>
         ))
 
+        //apply loading spinner
         const ViewAdsWithLoading = WithLoading(ViewAdsList);
 
         return (
@@ -86,7 +94,6 @@ class AdsList extends Component {
                 <div className="header-area">
                     <div className="jumbotron text-center header-content">
                         <h1 className="display-4">Featured Ads</h1>
-                        {/* <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> */}
                         <hr className="my-4"/>
                         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
                     </div>
@@ -129,15 +136,21 @@ class AdsList extends Component {
                                     <div className="filter-range"> 
                                         <div className="form-group ">
                                             <label htmlFor="priceRange">Price Range</label>
-                                            <input type="range" className="slider" min="0" max="5" defaultValue="0" step="0.5" id="priceRange"/>
+                                            <input onChange={this.handleChange.bind(this)} name="searchPrice" type="range" className="slider" min="0" max="1000000" defaultValue={searchPrice} step="100" id="priceRange"/>
+                                        </div>
+                                        <div className="range-wrapper">
+                                            <span>$: </span><span> from 0 to </span><span>{numFormatter(searchPrice)}</span>
                                         </div>
                                     </div>
                                     </div>
                                     <div className="col-12 col-sm-6 col-md-6 col-lg-6">
                                     <div className="filter-range"> 
                                         <div className="form-group ">
-                                            <label htmlFor="priceRange">Area Range</label>
-                                            <input type="range" className="slider" min="0" max="5" defaultValue="0" step="0.5" id="priceRange"/>
+                                            <label htmlFor="areaRange">Area Range</label>
+                                            <input onChange={this.handleChange.bind(this)} name="searchArea" type="range" className="slider" min="0" max="3000" defaultValue={searchArea} step="10" id="areaRange"/>
+                                        </div>
+                                        <div className="range-wrapper">
+                                            <span>m2: </span><span> from 0 to </span><span>{numFormatter(searchArea)}</span>
                                         </div>
                                     </div>
                                     </div>

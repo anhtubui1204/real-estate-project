@@ -37,7 +37,7 @@ class SingleAds extends Component {
                                 Floors
                                 <span>{nFloor}</span>
                             </li>
-                            <li>
+                            <li className="text-center grid">
                                 <button className="btn btn-info">Detail</button>
                             </li>
                         </ul>
