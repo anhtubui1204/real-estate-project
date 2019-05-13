@@ -106,4 +106,35 @@
     border-radius: 0
 }
 
-
+.ads-list .header-area{
+    background: url('../img/wp2406709.jpg') no-repeat center center;
+}
+.ads-list .jumbotron{
+    background-color: transparent
+}
+.ads-list .header-content{
+    color: white;
+    margin: 1.75rem 0px;
+    background-color: rgba(0, 0, 0, 0.384)
+}
+.ads-list hr{
+    border-top: 1px solid rgba(233, 232, 232, 0.466);
+}
+.ads-list .search-bar{
+    position: relative;
+    z-index: 1;
+}
+.ads-list .search-bar .search-form{
+    position: relative;
+    z-index: 1;
+    padding: 30px 50px;
+    border: 1px solid #e1dddd;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1)
+}
+.ads-list .search-bar .search-form .form-control{
+    border-radius: 0;
+    margin-bottom: 20px;
+}
+.ads-list .search-bar .btn-area{
+    margin-top: 10px;
+}
