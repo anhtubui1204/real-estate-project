@@ -134,7 +134,8 @@ class AddEditProfile extends Component {
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label htmlFor="inputWebsite">Website</label>
-                                    <input onChange={this.handleChange.bind(this)} value={website} name="website" type="text" className="form-control" id="inputWebsite" placeholder="Company Website" />
+                                    <input onChange={this.handleChange.bind(this)} value={website} name="website" type="text" className={classnames("form-control", {'is-invalid': errors.website})} id="inputWebsite" placeholder="Company Website" />
+                                    {errors.website && (<div className="invalid-feedback" style={{marginLeft: '50px'}}>{errors.website}</div>)}
                                 </div>
                             </div>
 

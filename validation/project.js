@@ -44,12 +44,13 @@ module.exports = function validateProjectInput(data){
         errors.projectType = 'Project Type field is required';
     }
 
-    if (Validator.isEmpty(data.totalAreaSqm)){
-        errors.totalAreaSqm = 'Area field is required';
-    }
     if (!Validator.isFloat(data.totalAreaSqm)){
         errors.totalAreaSqm = 'Area must be Number';
     }
+    if (Validator.isEmpty(data.totalAreaSqm)){
+        errors.totalAreaSqm = 'Area field is required';
+    }
+    
     
     if (Validator.isEmpty(data.startYear)){
         errors.startYear = 'Start Year field is required';

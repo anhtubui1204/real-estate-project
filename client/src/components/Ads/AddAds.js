@@ -3,6 +3,7 @@ import AppNavbar1 from '../layout/AppNavbar1';
 import classnames from 'classnames';
 import {urlAds, urlProject} from '../../myURL'
 import processResponse from '../../utils/ProcessResponse';
+import isEmpty from '../../utils/isEmpty';
 
 class AddAds extends Component {
     constructor() {
@@ -34,6 +35,7 @@ class AddAds extends Component {
         fetch(urlProject+'/all')
         .then(res=>res.json())
         .then(json=>this.setState({projects: json}))
+        .catch(err=> console.log(err))
     }
 
     componentDidMount=()=>{
@@ -94,8 +96,8 @@ class AddAds extends Component {
 
     render() {
         const {errors,project, projects, title, price, areaSqm, nBedRooms, nFloors, direction, street, district, city, name, phone, image1, image2, image3, imageMain} = this.state;
-        
-        const listSelectProjects = projects.map(option=>(
+        console.log(projects)
+        const listSelectProjects = isEmpty(projects)? '' : projects.map(option=>(
             <option key={option._id} value={option._id}>{option.name}</option>
         ))
         return (
@@ -108,7 +110,8 @@ class AddAds extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="add-ads-form-area">
+               
+                    <div className="add-ads-form-area">
                     <div className="container">
                         <div className="heading-area">
                             <h4>Form</h4>
@@ -201,6 +204,7 @@ class AddAds extends Component {
                         </form>
                     </div>
                 </div>
+
             </div>
         );
     }

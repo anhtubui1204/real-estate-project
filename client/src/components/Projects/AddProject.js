@@ -57,7 +57,6 @@ class AddProject extends Component {
             if(statusCode === 200){
                 alert("Successfully Registered")
                 this.props.history.push('/')
-                
             }
         })
         .catch(err=> console.log(err))
