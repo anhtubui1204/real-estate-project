@@ -31,11 +31,13 @@
 }
 .ads-col .ads-media{
     position: relative;
+    height: -webkit-fill-available;
+    max-height: 380px;
 }
 .ads-col .img-responsive{
     display: block;
     max-width: 100%;
-    height: auto;
+    height: inherit;
 }
 .ads-col .ads-card-content{
     padding: 20px;

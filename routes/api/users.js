@@ -123,4 +123,20 @@ router.get('/current',auth, (req,res)=>{
     });
 })
 
+//@route GET api/ads/all
+//GET all ads
+//access public
+router.get('/all', (req,res)=> {
+    User.find()
+        .then(user=>{
+            if(user.length === 0){
+                errors.nouser='There is no user'
+                res.status(404).json(errors);
+            } else {
+            res.json(user);
+            }
+        })
+        .catch(err => res.status(500).json({msg: 'Server Error'}))
+})
+
 module.exports = router;
