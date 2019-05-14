@@ -111,12 +111,12 @@
     background: url('../img/wp2406709.jpg') no-repeat center center;
 }
 .ads-list .jumbotron{
-    background-color: transparent
+    background-color: rgba(0, 0, 0, 0.336)
 }
 .ads-list .header-content{
     color: white;
     margin: 1.75rem 0px;
-    background-color: rgba(0, 0, 0, 0.384)
+    background-color: rgba(0, 0, 0, 0.473)
 }
 .ads-list hr{
     border-top: 1px solid rgba(233, 232, 232, 0.466);

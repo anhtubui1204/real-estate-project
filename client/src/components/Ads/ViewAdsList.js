@@ -5,8 +5,7 @@ import './css/ads.css';
 class ViewAdsList extends Component {
     render() {
         const {adsList} = this.props
-
-        
+    
         var listAds = (!adsList || !adsList.length)? (
             <p>No Ads, sorry</p>
         ) :

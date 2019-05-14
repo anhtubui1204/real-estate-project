@@ -18,3 +18,23 @@
 .add-project .add-project-form-area form .form-control{
     border-radius: 0
 }
+
+.view-projects-section .header-area{
+    background: url('../img/488159.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+.view-projects-section .jumbotron{
+    border-radius: 0;
+    background-color: rgba(238, 238, 238, 0.856);
+    min-height: 600px;
+}
+.view-projects-section .jumbotron .title{
+    margin: 50px 0px 30px;
+    background-color: rgba(105, 48, 1, 0.39);
+    color: #222222;
+    padding: 5px 0px;
+}
+.view-projects-section .display-projects{
+    padding: 4rem 0rem;
+}
