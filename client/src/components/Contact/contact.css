@@ -1,0 +1,59 @@
+
+
+
+
+
+
+.contact .container {
+  width: 900px;
+  height: 700px;
+  
+  position: relative;
+}
+.container .map {
+  width: 100%;
+  
+}
+.container .contact-form {
+  width: 100%;
+  margin-left: 2%;
+  
+}
+.container .contact-form .title {
+  font-size: 2.5em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: black;
+  margin: 5% 8%;
+}
+.container .contact-form .subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0 4% 5% 8%;
+}
+.container .contact-form input,
+.container .contact-form textarea {
+  width: 330px;
+  padding: 3%;
+  margin: 2% 8%;
+  color: #242424;
+  border: 1px solid #B7B7B7;
+}
+.container .contact-form input::placeholder,
+.container .contact-form textarea::placeholder {
+  color: #242424;
+}
+.container .contact-form .btn-send {
+  background: rgb(75, 216, 75);
+  width: 150px;
+  height: 40px;
+  color:white;
+  font-weight: 700;
+  margin: 2% 8%;
+  border: none;
+}
+
+.error{
+
+  color:red;
+}
