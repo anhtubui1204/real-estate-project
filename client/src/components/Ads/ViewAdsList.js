@@ -20,6 +20,7 @@ class ViewAdsList extends Component {
                 area={ads.areaSqm}
                 nBedRoom={ads.nBedRooms}
                 nFloor = {ads.nFloors}
+                id={ads._id}
                 className={"col-12 col-sm-12 col-md-4 col-lg-4 ads-col"}
             />
         )

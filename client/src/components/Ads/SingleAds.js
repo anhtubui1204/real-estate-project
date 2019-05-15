@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './css/ads.css';
 import numFormatter from '../../utils/numFormatter';
+import {Link} from 'react-router-dom';
 
 
 class SingleAds extends Component {
     render() {
-        const{title, image, price, district, city, area, nBedRoom, nFloor, className} = this.props
+        const{title, image, price, district, city, area, nBedRoom, nFloor, className, id} = this.props
         return (
             <div className={className}>
                 <div className="ads-item">
@@ -38,11 +39,11 @@ class SingleAds extends Component {
                                 <span>{nFloor}</span>
                             </li>
                             <li className="text-center grid">
-                                <button className="btn btn-info">Detail</button>
+                                <Link to={`/detailads/`+id}><button className="btn btn-info">Detail</button></Link>
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         );
