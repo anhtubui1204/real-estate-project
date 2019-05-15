@@ -40,7 +40,7 @@ class Projects extends Component {
         const paginatedProjects = pagination(projects, n_prj_per_page,numPage);
         const {paginatedList, pages} = paginatedProjects;
         var btnPages = pages.map(page=> (
-            <button key={page} type="button" className="btn btn-light"  onClick={this.setPage.bind(this, page)}>{page}.</button>
+            <button key={page} type="button" className="btn btn-light btn-sm" onClick={this.setPage.bind(this, page)}>{page}.</button>
         ))
 
         const ViewPrjWithLoading = WithLoading(ViewPrjList)
@@ -51,11 +51,16 @@ class Projects extends Component {
                 <div className="header-area">
                     <div className="jumbotron text-center view-content">
                         <div className="title">
-                        <h1 className="display-4">Top Projects</h1>
+                            <h1 className="display-4">Top Projects</h1>
                         </div>
                         <div className="display-projects">
                             <div className="container">
                                <ViewPrjWithLoading isLoading={loading} prjList={paginatedList}/>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <div className="btn-group" role="group">
+                            {btnPages}
                             </div>
                         </div>
                     </div>

@@ -13,7 +13,7 @@ class ViewPrjList extends Component {
                 <SinglePrj
                     key={index}
                     prj={prj}
-                    className={"col-12 col-sm-12 col-md-4 col-lg-4 prj-col"}
+                    className={"col-12 col-sm-12 col-md-6 col-lg-4 prj-col"}
                 />
             )
         )
