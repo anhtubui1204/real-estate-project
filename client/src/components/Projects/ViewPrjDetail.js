@@ -23,17 +23,17 @@ class ViewPrjDetail extends Component {
                         <div className="detail-body border-left border-right border-bottom">
                             <div className="uploader-info mb-5">
                                 <div className="row">
-                                    <div className="col-md-3">
+                                    <div className="col-md-3 d-flex align-items-center ">
                                         <img src={project.user.avatar} className="img-thumbnail" alt="avatar"
                                              style={{width:'200px', height:'180px'}}/>
                                     </div>
-                                    <div className="col-md-9">
+                                    <div className="col-md-9 d-flex align-items-">
                                         <ul>
                                             <li>
                                             <span>Name: </span> {project.user.name}
                                             </li>
                                             <li>
-                                                <span>Upload : </span> {project.postDate}
+                                                <span>Upload Date: </span> {project.postDate}
                                             </li>
                                         </ul>
                                     </div>
