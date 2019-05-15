@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class ViewPrjDetail extends Component {
     render() {
@@ -30,10 +32,10 @@ class ViewPrjDetail extends Component {
                                     <div className="col-md-9 d-flex align-items-">
                                         <ul>
                                             <li>
-                                            <span>Name: </span> {project.user.name}
+                                            <span>Uploader: </span> {project.user.name}
                                             </li>
                                             <li>
-                                                <span>Upload Date: </span> {project.postDate}
+                                                <span>Upload Date: </span> <Moment format="YYYY/MM/DD">{project.postDate}</Moment>
                                             </li>
                                         </ul>
                                     </div>
