@@ -10,7 +10,7 @@ class Profile extends Component {
     constructor() {
         super()
         this.state = {
-            isAuth: true,
+            isAuth: false,
             profile:{},
             errors:{},
             loading: false,
@@ -31,9 +31,10 @@ class Profile extends Component {
             if(statusCode !== 200){
                 this.setState({errors: json})
             } else {
-                
+
                 this.setState({
-                    profile: json
+                    profile: json,
+                    isAuth: true
                 })
             }
             this.setState({loading:false})

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
+import numFormatter from "../../utils/numFormatter";
 
 class SinglePrj extends Component {
     render() {
         const{prj, className}=this.props
-        const{name, imageURL, totalAreaSqm, startYear} = prj;
+        const{name, imageURL, totalAreaSqm, totalAreaHa, startYear, _id} = prj;
 
         return (
             <div className={className}>
@@ -17,13 +19,17 @@ class SinglePrj extends Component {
                                 </div>
                                 <div className="prj-brief">
                                     <div className="area-section mb-1">
-                                    <span>Area: </span><span>{totalAreaSqm} m2</span>
+                                    <span>Area: </span>{(totalAreaHa < 5)? (
+                                        <span>{numFormatter(totalAreaSqm)} m2</span>
+                                    ):(
+                                        <span>{numFormatter(totalAreaHa)} ha</span>
+                                    )}
                                     </div>
                                     <div className="startYr-section mb-3">
                                     <span>Start Year: </span><span>{startYear}</span>
                                     </div>
                                 </div>
-                                <button type="button" className="btn btn-dark btn-sm">Detail</button>
+                                <Link to={`/detailprj/`+_id}><button type="button" className="btn btn-dark btn-sm">Detail</button></Link>
                             </div>
                         </div>
                     </div>

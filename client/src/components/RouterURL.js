@@ -11,6 +11,7 @@ import { PrivateRoute } from '../utils/PrivateRoute';
 import AddEditProfile from '../components/Users/AddEditProfile'
 import AddAds from './Ads/AddAds';
 import AddProject from './Projects/AddProject';
+import ProjectDetail from "./Projects/ProjectDetail";
 
 class RouterURL extends Component {
     render() {
@@ -20,6 +21,7 @@ class RouterURL extends Component {
                     <Route exact path='/' component={HomePage} />
                     <Route exact path='/ads' component={AdsList} />
                     <Route exact path='/project' component={Projects} />
+                    <Route exact path='/detailprj/:id' component={ProjectDetail} />
                     <Route exact path='/contact' component={Contact} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={SignUp} />

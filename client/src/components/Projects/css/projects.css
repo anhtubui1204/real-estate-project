@@ -94,3 +94,44 @@
 .prj-col .prj-brief span{
     color: aliceblue
 }
+
+.project-detail .header-area{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #8a6d3b;
+}
+.project-detail .header-area .title{
+    margin: 40px 0px;
+    border-bottom: 2px solid black;
+}
+.project-detail .header-area .title h5{
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #e1dddd;
+    font-style: italic;
+    display: inline-block;
+    padding: 2px 5px;
+    background-color: #333333;
+}
+.project-detail .header-area .title h1{
+    font-size: 67px;
+    margin-top: 12px;
+}
+.project-detail .project-detail-page{
+    padding: 78px 0px 100px;
+    position: relative;
+}
+.project-detail .detail-body{
+    padding: 50px;
+
+}
+.project-detail .detail-body ul li {
+    border-bottom: 1px  #555555;
+    padding: 15px 0px;
+    font-size: 25px;
+}
+.project-detail .detail-body ul li span {
+    color: #818181;
+    padding-right: 5px;
+}
