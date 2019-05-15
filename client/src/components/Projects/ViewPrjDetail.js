@@ -20,7 +20,7 @@ class ViewPrjDetail extends Component {
                 <div className="project-detail-page">
                     <div className="container">
                         <div className="prj-img">
-                            <img src={project.imageURL} className="img-fluid"/>
+                            <img src={project.imageURL} className="img-fluid" alt=""/>
                         </div>
                         <div className="detail-body border-left border-right border-bottom">
                             <div className="uploader-info mb-5">
@@ -41,6 +41,57 @@ class ViewPrjDetail extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="prj-info1 mb-3 border-top">
+                                <div className="row">
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Project Type
+                                        </span>
+                                        <strong className="d-block">{project.projectType}</strong>
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Start Year
+                                        </span>
+                                        <strong className="d-block">{project.startYear}</strong>
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Area
+                                        </span>
+                                        {(project.totalAreaHa<5)?(
+                                            <strong className="d-block">{project.totalAreaSqm} m2</strong>
+                                        ):(
+                                            <strong className="d-block">{project.totalAreaHa} ha</strong>
+                                        )}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="prj-info1 mb-5 border-bottom">
+                                <div className="row">
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Owner
+                                        </span>
+                                        <strong className="d-block">{project.owner}</strong>
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Location
+                                        </span>
+                                        <strong className="d-block">{project.location}</strong>
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-3 text-center">
+                                        <span className="caption">
+                                            Website
+                                        </span>
+                                        <strong className="d-block">{project.website}</strong>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

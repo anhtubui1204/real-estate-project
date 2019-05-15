@@ -136,3 +136,12 @@
     color: #818181;
     padding-right: 5px;
 }
+.project-detail .project-detail-page .caption{
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    color: #8a5004
+}
+.project-detail .container{
+    max-width: 1000px;
+}
