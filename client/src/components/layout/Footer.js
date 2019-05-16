@@ -47,7 +47,7 @@ class Footer extends Component {
                     <h5>Links</h5>
                     <ul style={myStyle.ul} className="nav-list">
                         <li><Link to={"/"}>Home</Link></li>
-                        <li><Link to={"/"}>Products</Link></li>
+                        <li><Link to={"/ads"}>Ads</Link></li>
                         
                     </ul>
 

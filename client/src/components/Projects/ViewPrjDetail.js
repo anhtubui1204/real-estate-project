@@ -29,7 +29,7 @@ class ViewPrjDetail extends Component {
                                         <img src={project.user.avatar} className="img-thumbnail" alt="avatar"
                                              style={{width:'200px', height:'180px'}}/>
                                     </div>
-                                    <div className="col-md-9 d-flex align-items-">
+                                    <div className="col-md-9 d-flex align-items-center">
                                         <ul>
                                             <li>
                                             <span>Uploader: </span> {project.user.name}

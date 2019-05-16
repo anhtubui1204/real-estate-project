@@ -38,7 +38,8 @@
 .ads-col .img-responsive{
     display: block;
     max-width: 100%;
-    height: -webkit-fill-available;
+    height: auto;
+    min-height: 300px;
 }
 .ads-col .ads-card-content{
     padding: 20px;
@@ -171,7 +172,10 @@
     border-radius: 0
 }
 
-
+.ads-detail .img-thumbnail{
+    padding: 0;
+    border:none
+}
 .ads-detail .header-area{
     position: relative;
     width: 100%;
@@ -196,7 +200,7 @@
     font-weight: bold;
 }
 .ads-detail .ads-detail-page{
-    padding: 65px 0px 50px;
+    padding: 54px 0px 40px;
 }
 .ads-detail .ads-detail-page .ads-title{
     font-weight: 700;
@@ -235,4 +239,48 @@
 .ads-detail .ads-image .content-width{
     width: 50%;
     min-width: 500px;
+}
+.ads-detail .ads-image .carousel-inner{
+    max-height: 495px
+}
+.ads-detail .ads-detail-extra{
+    margin: 70px 0px;
+}
+.ads-detail .ads-detail-extra .caption{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #fd784f;
+
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list{
+    margin-top: 17px;
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list .facility{
+    display: inline-block;
+    margin-right: 30px;
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list .facility-content{
+    margin-top: 7px;
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list .facility .value{
+    position: relative;
+    margin-left: 10px;
+    font-size: 18px
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list .facility .f-icon{
+    display: inline-block
+}
+.ads-detail .ads-detail-extra .extra-detail .facilities-list .facility .f-icon i{
+    font-size: 18px
+}
+.ads-detail .ads-detail-extra .address{
+    margin: 48px 0px 30px;
+}
+.ads-detail .ads-detail-extra .address-content span{
+    margin: 0px 8px;
+    font-size: 18px;
+}
+.ads-detail .ads-detail-extra .contact-avatar{
+    width: 100%
 }
