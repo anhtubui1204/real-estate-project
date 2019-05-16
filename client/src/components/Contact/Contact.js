@@ -18,7 +18,7 @@ class Contact extends Component {
                             <div className="col-6">
                             <div className="contact-form">
                         <h1 className="title">Contact Me</h1>
-                        <h2 className="subtitle">I am here assist you.</h2>
+                        <h2 className="subtitle">We are here assist you.</h2>
                         <form className="cmxform" id="commentForm" method="get" action>
                             <input id="cname" name="name" minLength={2} type="text" placeholder="Your Name" required />
                             <input id="cemail" type="email" name="email" placeholder="Your E-mail Address" required />
