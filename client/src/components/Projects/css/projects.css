@@ -18,3 +18,130 @@
 .add-project .add-project-form-area form .form-control{
     border-radius: 0
 }
+
+.view-projects-section .header-area{
+    background: url('../img/488159.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+.view-projects-section .jumbotron{
+    border-radius: 0;
+    background-color: rgba(238, 238, 238, 0.856);
+    min-height: 600px;
+}
+.view-projects-section .jumbotron .title{
+    margin: 50px 0px 30px;
+    background-color: rgba(105, 48, 1, 0.39);
+    color: #222222;
+    padding: 5px 0px;
+}
+.view-projects-section .display-projects{
+    padding: 4rem 0rem;
+}
+.view-projects-section .btn-sm{
+    padding: 0.025rem 0.35rem!important;
+}
+.view-projects-section .btn-light:hover{
+    background-color: rgba(134, 98, 44, 0.788)
+}
+
+.prj-col{
+    margin: 20px 0px
+}
+.prj-col .prj-media{
+    position: relative;
+    height: 100%;
+    min-height: 250px;
+    max-height: 320px;
+}
+.prj-col .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: -webkit-fill-available;
+}
+.prj-col .overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 98, 122, 0.788);
+    overflow: hidden;
+    width: 100%;
+    height: 70%;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.prj-col .prj-media:hover .overlay{
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.prj-col .prj-content{
+    margin: 17px;
+    border: 2px solid white;
+    width: 100%;
+    height: 100%;
+    
+}
+.prj-col .prj-content h3{
+    color: #f0f0f0;
+    margin: 12px 0px 20px;
+    font-weight: 900
+}
+.prj-col .prj-brief span{
+    color: aliceblue
+}
+
+.project-detail .header-area{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #8a6d3b;
+}
+.project-detail .header-area .title{
+    margin: 40px 0px;
+    border-bottom: 2px solid black;
+}
+.project-detail .header-area .title h5{
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #e1dddd;
+    font-style: italic;
+    display: inline-block;
+    padding: 2px 5px;
+    background-color: #333333;
+}
+.project-detail .header-area .title h1{
+    font-size: 67px;
+    margin-top: 12px;
+}
+.project-detail .project-detail-page{
+    padding: 78px 0px 100px;
+    position: relative;
+}
+.project-detail .detail-body{
+    padding: 50px;
+
+}
+.project-detail .detail-body ul li {
+    border-bottom: 1px dotted #555555;
+    padding: 15px 0px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.project-detail .detail-body ul li span {
+    color: #818181;
+    padding-right: 5px;
+}
+.project-detail .project-detail-page .caption{
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    color: #8a5004
+}
+.project-detail .container{
+    max-width: 1000px;
+}

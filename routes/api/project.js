@@ -9,6 +9,7 @@ const auth = passport.authenticate('jwt', {session: false});
 
 //Load Model
 const Project = require('../../models/Project');
+const Ads = require('../../models/Ads')
 
 //Load Validation
 const validateProjectInput = require('../../validation/project');
@@ -117,21 +118,25 @@ router.get('/:id',  (req,res)=> {
 //@ route DELETE api/project/delete/:id
 //DELETE projects by project id
 //@ access private
-router.delete('/delete/:id', auth, (req,res)=> {
-    const errors = {}
+router.delete('/delete/:id', auth, async (req,res)=> {
+    try{
+        const errors = {}
 
-    Project.findById(req.params.id)
-        .then(project=> {
-            if(project.user.toString() !== req.user.id){
-                errors.unAuth = 'User not Authorized'
-                res.status(401).json(errors)
-            } else {
-                project.remove();
-                res.json({msg: 'Project removed'})
-            }
-        })
-        .catch(err => res.status(500).json(err))
-   
+        await Project.findById(req.params.id)
+            .then(project=> {
+                if(project.user.toString() !== req.user.id){
+                    errors.unAuth = 'User not Authorized'
+                    res.status(401).json(errors)
+                } else {
+                    project.remove();
+                    res.json({msg: 'Project removed'})
+                }
+            })
+            
+    
+    } catch (err) {
+        res.status(500).json({msg: 'Server Error'})
+    }
 })
 
 //@ route GET api/project/

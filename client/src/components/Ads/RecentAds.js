@@ -20,6 +20,7 @@ class RecentAds extends Component {
                 area={ads.areaSqm}
                 nBedRoom={ads.nBedRooms}
                 nFloor = {ads.nFloors}
+                id = {ads._id}
                 className={"col-12 col-sm-12 col-md-12 col-lg-6 ads-col"}
             />
         )
