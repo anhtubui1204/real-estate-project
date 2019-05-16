@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import AppNavbar1 from "./AdsList";
+
 import {urlAds} from "../../myURL";
 import WithLoading from "../../utils/WithLoading";
 import ViewAdsDetail from "./ViewAdsDetail";
+import AppNavbar1 from "../layout/AppNavbar1";
 
 class AdsDetail extends Component {
 
@@ -30,12 +31,13 @@ class AdsDetail extends Component {
 
 
     render() {
-        const{ads}=this.state
+        const{ads, loading}=this.state
 
         const AdsDetailWithLoading = WithLoading(ViewAdsDetail)
         return (
             <div className="ads-detail">
                 <AppNavbar1 adsActive={"nav-item active"}/>
+                <AdsDetailWithLoading isLoading={loading} ads={ads}/>
             </div>
         );
     }

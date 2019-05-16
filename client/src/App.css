@@ -155,3 +155,8 @@ img{
 .grid{
   display: grid;
 }
+
+/*Carousel*/
+.carousel-inner{
+  height: -webkit-fill-available;
+}
