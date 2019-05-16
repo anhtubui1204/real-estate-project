@@ -3,10 +3,15 @@ import {Link} from "react-router-dom";
 import './css/ads.css'
 import numFormatter from "../../utils/numFormatter";
 import Moment from 'react-moment';
+import checkAuth from '../../utils/checkAuth';
 
 class ViewAdsDetail extends Component {
     render() {
         const {ads} = this.props;
+        const localToken = localStorage.getItem('jwtToken')
+        if(ads){console.log(checkAuth(localToken, ads.user._id))}
+        
+
         console.log(ads)
         const adsDetail = (!ads)? (
             <p>Errors!!!!</p>
@@ -35,9 +40,11 @@ class ViewAdsDetail extends Component {
                                 <div className="ads-title">
                                     <h1>{ads.title}</h1>
                                 </div>
-                                <div className="project-info">
+                                {ads.project && (
+                                    <div className="project-info">
                                     <span>From project: </span><span className="project-name">{ads.project.name}</span>
-                                </div>
+                                    </div>
+                                )}
                             </div>
                             <div className="col-4">
                                 <div className="ads-price float-lg-right">
@@ -135,6 +142,12 @@ class ViewAdsDetail extends Component {
                                         <span>{ads.contactInfo.name}, {ads.contactInfo.phone}</span>
                                     </div>
                                 </div>
+                                {checkAuth(localToken, ads.user._id) && (
+                                    <div className="edit-btn">
+                                        <button className="btn btn-dark">Edit Ads</button>
+                                    </div>
+                                )}
+                               
                             </div>
                             <div className="col-12 col-md-5">
                                 <div className="contact-info">

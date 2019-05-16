@@ -43,7 +43,7 @@ class Login extends Component {
         .then(processResponse) //process response with status code
         .then(res => {
             const {statusCode, json} = res;
-            if(statusCode === 400){
+            if(statusCode !== 200){
                 this.setState({errors: json})
             }
             if(statusCode === 200){
@@ -65,7 +65,7 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        // console.log(errors)
+        console.log(errors)
         return (
             
             <div>

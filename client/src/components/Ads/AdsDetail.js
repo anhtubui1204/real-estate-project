@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
-import {urlAds} from "../../myURL";
+import {urlAds, urlUsers} from "../../myURL";
 import WithLoading from "../../utils/WithLoading";
 import ViewAdsDetail from "./ViewAdsDetail";
 import AppNavbar1 from "../layout/AppNavbar1";
+import checkAuth from '../../utils/checkAuth';
 
 class AdsDetail extends Component {
 
@@ -17,7 +18,6 @@ class AdsDetail extends Component {
 
     fetchAds=()=>{
         const {id} = this.props.match.params;
-
         fetch(urlAds+'/'+id)
             .then(res=>res.json())
             .then(json=>this.setState({ads: json, loading: false}))
@@ -32,6 +32,8 @@ class AdsDetail extends Component {
 
     render() {
         const{ads, loading}=this.state
+        console.log(ads)
+       
 
         const AdsDetailWithLoading = WithLoading(ViewAdsDetail)
         return (
