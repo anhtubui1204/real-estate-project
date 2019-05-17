@@ -34,7 +34,7 @@ class AdsList extends Component {
                     ads=>
                     ads.title.toLowerCase().indexOf(searchName.toLowerCase())!==-1
                     &&
-                    ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1
+                    (ads.project && ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1)
                     &&
                     ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
                     &&
