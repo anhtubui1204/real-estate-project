@@ -9,6 +9,7 @@ import Footer from './components/layout/Footer';
 import localStorageExpire from './javascript-localstorage-expiry';
 
 class App extends Component {
+  
   render() {
     localStorageExpire();
     return (
