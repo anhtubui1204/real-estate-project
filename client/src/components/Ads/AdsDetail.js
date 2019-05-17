@@ -35,18 +35,18 @@ class AdsDetail extends Component {
             })
             .then(res=>res.json()) : {}
         
-            Promise.all([apiRequest1,apiRequest2]).then((values)=>{
-                this.setState({
-                    loading:false,
-                    ads:values[0],
-                    authUser:values[1]
-                })
-                if (values[1] && values[1].id === values[0].user._id){
-                    this.setState({isAuth: true})
-                } else {
-                    this.setState({isAuth: false})
-                }
-            });
+        Promise.all([apiRequest1,apiRequest2]).then((values)=>{
+            this.setState({
+                loading:false,
+                ads:values[0],
+                authUser:values[1]
+            })
+            if (values[1] && values[1].id === values[0].user._id){
+                this.setState({isAuth: true})
+            } else {
+                this.setState({isAuth: false})
+            }
+        });
     }
 
     componentDidMount() {
@@ -56,8 +56,8 @@ class AdsDetail extends Component {
  
     render() {
         const{ads, loading, isAuth}=this.state
-        
         const AdsDetailWithLoading = WithLoading(ViewAdsDetail)
+        
         return (
             <div className="ads-detail">
                 <AppNavbar1 adsActive={"nav-item active"}/>
