@@ -3,16 +3,12 @@ import {Link} from "react-router-dom";
 import './css/ads.css'
 import numFormatter from "../../utils/numFormatter";
 import Moment from 'react-moment';
-import checkAuth from '../../utils/checkAuth';
+
 
 class ViewAdsDetail extends Component {
     render() {
-        const {ads} = this.props;
-        const localToken = localStorage.getItem('jwtToken')
-        if(ads){console.log(checkAuth(localToken, ads.user._id))}
-        
+        const {ads, isAuth} = this.props;
 
-        console.log(ads)
         const adsDetail = (!ads)? (
             <p>Errors!!!!</p>
         ): (
@@ -142,12 +138,12 @@ class ViewAdsDetail extends Component {
                                         <span>{ads.contactInfo.name}, {ads.contactInfo.phone}</span>
                                     </div>
                                 </div>
-                                {checkAuth(localToken, ads.user._id) && (
+                                {isAuth && (
                                     <div className="edit-btn">
-                                        <button className="btn btn-dark">Edit Ads</button>
+                                    <button className="btn btn-dark">Edit Ads</button>
                                     </div>
                                 )}
-                               
+
                             </div>
                             <div className="col-12 col-md-5">
                                 <div className="contact-info">
