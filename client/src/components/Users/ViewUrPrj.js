@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
-
+import {Link} from 'react-router-dom'
+import { urlProject } from '../../myURL';
 
 class ViewUrPrj extends Component {
+    
+    handleDel=(id)=>{
+        const localToken = localStorage.getItem('jwtToken');
+        fetch(urlProject+'/delete/'+id,{
+            headers:{
+                'Authorization': localToken
+            }      
+        })
+        .then(res=>res.json())
+        .then(json=>alert('Project Deleted!'))
+        .catch(err=>console.log(err))
+    }
+
     render() {
         const{projects, errors} = this.props
         const urPrjs = (!projects || projects.length === 0) ? (
@@ -17,8 +31,8 @@ class ViewUrPrj extends Component {
                     <td><Moment format="YYYY/MM/DD">{project.postDate}</Moment></td>
                     <td>
                         <div className="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-info">Detail</button>
-                            <button type="button" className="btn btn-danger">Delete</button>
+                            <Link to={`/detailprj/${project._id}`}><button type="button" className="btn btn-info">Detail</button></Link>
+                            <button onClick={this.handleDel.bind(this, project._id)} type="button" className="btn btn-danger">Delete</button>
                         </div>
                     </td>
                 </tr>

@@ -128,3 +128,7 @@
     text-transform: uppercase;
     font-weight: 800
 }
+
+.display-items{
+    min-height: 500px;
+}
