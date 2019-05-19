@@ -47,7 +47,6 @@ class UserProjects extends Component {
         this.fetchProject()
     }
 
-
     render() {
         const{projects, loading, errors}=this.state
         console.log(projects)
@@ -63,8 +62,8 @@ class UserProjects extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="display-projects my-5">
-                    <UrProjectWithLoading isLoading={loading} errors={errors} projects={projects}/>
+                <div className="display-items my-5">
+                    <UrProjectWithLoading isLoading={loading} errors={errors} projects={projects} />
                 </div>
 
             </div>
