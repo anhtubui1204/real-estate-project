@@ -6,6 +6,7 @@ import processResponse from '../../utils/ProcessResponse';
 import WithLoading from '../../utils/WithLoading';
 import ViewUrPrj from './ViewUrPrj';
 
+
 class UserProjects extends Component {
 
     constructor() {
@@ -15,7 +16,8 @@ class UserProjects extends Component {
            projects:[],
            n_prj_per_page: 6,
            numPage: 1,
-           errors:{}
+           errors:{},
+           isRefresh: false
         }
     }
 
@@ -40,7 +42,23 @@ class UserProjects extends Component {
             this.setState({loading:false})
         })
         .catch(err=>console.log(err))
+    }
 
+    handleDel=(id)=>{
+        const localToken = localStorage.getItem('jwtToken');
+        console.log(id)
+        fetch(urlProject+ '/delete/'+id,{
+            headers:{
+                'Authorization': localToken
+            },
+            method:'delete'      
+        })
+        .then(res=>res.json())
+        .then(json=>{
+            alert(json.msg)
+        })
+        .catch(err=>console.log(err))
+        this.fetchProject()
     }
 
     componentDidMount=()=>{
@@ -54,7 +72,7 @@ class UserProjects extends Component {
         const UrProjectWithLoading = WithLoading(ViewUrPrj)
         
         return (
-            <div className="user-project p-5">
+            <div className="user-project">
                 <AppNavbar1 />
                 <div className="header-area">
                     <div className="container h-100 align-items-center d-flex justify-content-center">
@@ -64,7 +82,7 @@ class UserProjects extends Component {
                     </div>
                 </div>
                 <div className="display-items my-5">
-                    <UrProjectWithLoading isLoading={loading} errors={errors} projects={projects} refresh={this.fetchProject.bind(this)} />
+                    <div className="container"><UrProjectWithLoading isLoading={loading} errors={errors} projects={projects} onDelete={this.handleDel}/></div>
                 </div>
 
             </div>

@@ -53,7 +53,7 @@ class UserAds extends Component {
         const UrAdWithLoading = WithLoading(ViewUrAds)
         
         return (
-            <div className="user-project p-5">
+            <div className="user-project">
                 <AppNavbar1 />
                 <div className="header-area">
                     <div className="container h-100 align-items-center d-flex justify-content-center">
@@ -63,7 +63,9 @@ class UserAds extends Component {
                     </div>
                 </div>
                 <div className="display-items my-5">
+                    <div className="container">
                     <UrAdWithLoading isLoading={loading} errors={errors} ads={ads} />
+                    </div>
                 </div>
 
             </div>
