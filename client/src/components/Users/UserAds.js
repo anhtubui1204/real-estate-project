@@ -42,6 +42,23 @@ class UserAds extends Component {
 
     }
 
+     
+    handleDel=(id)=>{
+        const localToken = localStorage.getItem('jwtToken');
+        fetch(urlAds+'/delete/'+id,{
+            headers:{
+                'Authorization': localToken
+            },
+            method:'delete'      
+        })
+        .then(res=>res.json())
+        .then(json=>{
+            alert('Ad Deleted!')
+            this.props.history.push('/ads')
+        })
+        .catch(err=>console.log(err))
+    }
+
     componentDidMount=()=>{
         this.setState({loading: true})
         this.fetchAd()
@@ -64,7 +81,7 @@ class UserAds extends Component {
                 </div>
                 <div className="display-items my-5">
                     <div className="container">
-                    <UrAdWithLoading isLoading={loading} errors={errors} ads={ads} />
+                    <UrAdWithLoading isLoading={loading} errors={errors} ads={ads} onDelete={this.handleDel} />
                     </div>
                 </div>
 

@@ -5,22 +5,7 @@ import {Link} from 'react-router-dom'
 import { urlAds } from '../../myURL';
 
 class ViewUrAds extends Component {
-    
-    handleDel=(id)=>{
-        const localToken = localStorage.getItem('jwtToken');
-        fetch(urlAds+'/delete/'+id,{
-            headers:{
-                'Authorization': localToken
-            },
-            method:'delete'      
-        })
-        .then(res=>res.json())
-        .then(json=>{
-            alert('Ad Deleted!')
-            this.props.history.push('/ads')
-        })
-        .catch(err=>console.log(err))
-    }
+   
 
     render() {
         const{ads, errors} = this.props
@@ -36,7 +21,7 @@ class ViewUrAds extends Component {
                     <td>
                         <div className="btn-group" role="group" aria-label="Basic example">
                             <Link to={`/detailads/${ad._id}`}><button type="button" className="btn btn-info">Detail</button></Link>
-                            <button onClick={this.handleDel.bind(this, ad._id)} type="button" className="btn btn-danger">Delete</button>
+                            <button onClick={this.props.onDelete.bind(this, ad._id)} type="button" className="btn btn-danger">Delete</button>
                         </div>
                     </td>
                 </tr>

@@ -56,9 +56,10 @@ class UserProjects extends Component {
         .then(res=>res.json())
         .then(json=>{
             alert(json.msg)
+            this.props.history.push('/project')
         })
         .catch(err=>console.log(err))
-        this.fetchProject()
+        
     }
 
     componentDidMount=()=>{
