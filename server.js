@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport'); //used for account authorization with JWT token
-
+const path = require('path');
 const users= require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const ads = require('./routes/api/ads');
@@ -23,7 +23,7 @@ const app = express();
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 //Passport middleware
 app.use(passport.initialize());
