@@ -12,8 +12,8 @@ class AppNavbar1 extends Component {
         
       }
 
-    signOut=(e)=> {
-        e.preventDefault();
+    signOut=()=> {
+        
         localStorage.removeItem('jwtToken')
         alert('Successfully Logged out')
         this.setState({isAuth: false})

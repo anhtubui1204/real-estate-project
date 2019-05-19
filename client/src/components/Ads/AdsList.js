@@ -31,16 +31,24 @@ class AdsList extends Component {
         this.setState({
             adsList:[...adsList]
                 .filter(
-                    ads=>
-                    ads.title.toLowerCase().indexOf(searchName.toLowerCase())!==-1
-                    &&
-                    (ads.project && ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1)
-                    &&
-                    ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
-                    &&
-                    parseInt(ads.price)<searchPrice
-                    &&
-                    parseInt(ads.areaSqm)<searchArea
+                    ads=> ads.project? 
+                        ads.title.toLowerCase().indexOf(searchName.toLowerCase())!==-1
+                        &&
+                        ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
+                        &&
+                        parseInt(ads.price)<searchPrice
+                        &&
+                        parseInt(ads.areaSqm)<searchArea
+                        &&
+                        (ads.project && ads.project.name.toLowerCase().indexOf(searchProjectName.toLowerCase())!==-1)
+                     : 
+                        ads.title.toLowerCase().indexOf(searchName.toLowerCase())!==-1
+                        &&
+                        ads.nBedRooms.toString().indexOf(searchBed.toString())!==-1
+                        &&
+                        parseInt(ads.price)<searchPrice
+                        &&
+                        parseInt(ads.areaSqm)<searchArea
                 )
         })
     }
@@ -53,7 +61,14 @@ class AdsList extends Component {
 
     handleRefresh=(e)=>{
         e.preventDefault();
-        this.setState({loading: true})
+        this.setState({
+            loading: true,
+            searchName:'',
+            searchProjectName:'',
+            searchPrice: 1000000,
+            searchArea:3000,
+            searchBed:'',
+        })
         this.fetchAds()
     }
 
@@ -71,12 +86,22 @@ class AdsList extends Component {
     }
 
     componentDidMount=()=>{
+        if(this.props.location.state){
+            const {searchAdsName, searchArea, searchNBed, searchPrice, searchPrjName} = this.props.location.state
+            this.setState({
+                searchName:searchAdsName,
+                searchProjectName: searchPrjName,
+                searchArea: searchArea,
+                searchBed: searchNBed,
+                searchPrice: searchPrice
+            })
+        }
         this.setState({loading: true})
         this.fetchAds()
     }
 
     render() {
-        const {adsList, n_ads_per_page, numPage, loading, searchArea, searchPrice} = this.state;
+        const {adsList, n_ads_per_page, numPage, loading, searchArea, searchPrice, searchName, searchProjectName, searchBed} = this.state;
         
         //load Pagination
         const adsListPaginated = pagination(adsList, n_ads_per_page, numPage);
@@ -110,6 +135,7 @@ class AdsList extends Component {
                                             className="form-control"
                                             name="searchName"
                                             placeholder="Search by Ads Name"
+                                            value={searchName}
                                         />
                                     </div>
                                     <div className="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -119,6 +145,7 @@ class AdsList extends Component {
                                             className="form-control"
                                             name="searchProjectName"
                                             placeholder="Search by Project Name"
+                                            value = {searchProjectName}
                                         />
                                     </div>
                                     <div className="col-12 col-sm-4 col-md-4 col-lg-4">
@@ -128,6 +155,7 @@ class AdsList extends Component {
                                             className="form-control"
                                             name="searchBed"
                                             placeholder="Search by Number of Bedrooms"
+                                            value={searchBed}
                                         />
                                     </div>
                                 </div>
@@ -136,7 +164,7 @@ class AdsList extends Component {
                                     <div className="filter-range"> 
                                         <div className="form-group ">
                                             <label htmlFor="priceRange">Price Range</label>
-                                            <input onChange={this.handleChange.bind(this)} name="searchPrice" type="range" className="slider" min="0" max="1000000" defaultValue={searchPrice} step="100" id="priceRange"/>
+                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchPrice" type="range" className="slider" min="0" max="1000000" defaultValue={searchPrice} step="100" id="priceRange"/>
                                         </div>
                                         <div className="range-wrapper">
                                             <span>$: </span><span> from 0 to </span><span>{numFormatter(searchPrice)}</span>
@@ -147,7 +175,7 @@ class AdsList extends Component {
                                     <div className="filter-range"> 
                                         <div className="form-group ">
                                             <label htmlFor="areaRange">Area Range</label>
-                                            <input onChange={this.handleChange.bind(this)} name="searchArea" type="range" className="slider" min="0" max="3000" defaultValue={searchArea} step="10" id="areaRange"/>
+                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchArea" type="range" className="slider" min="0" max="3000" defaultValue={searchArea} step="10" id="areaRange"/>
                                         </div>
                                         <div className="range-wrapper">
                                             <span>m2: </span><span> from 0 to </span><span>{numFormatter(searchArea)}</span>

@@ -39,7 +39,7 @@
     display: block;
     max-width: 100%;
     height: auto;
-    min-height: 300px;
+    max-height: 300px;
 }
 .ads-col .ads-card-content{
     padding: 20px;

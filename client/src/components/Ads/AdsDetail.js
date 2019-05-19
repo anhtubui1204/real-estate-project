@@ -33,7 +33,7 @@ class AdsDetail extends Component {
                     'Authorization': token
                 }
             })
-            .then(res=>res.json()) : {}
+            .then(res=>res.json()) : {}  //if token exists, then fetch data, else return {}
         
         Promise.all([apiRequest1,apiRequest2]).then((values)=>{
             this.setState({
@@ -41,7 +41,7 @@ class AdsDetail extends Component {
                 ads:values[0],
                 authUser:values[1]
             })
-            if (values[1] && values[1].id === values[0].user._id){
+            if (values[1] && values[1].id === values[0].user._id){   //this will check if the current loged in user is the one who posted the ads. if yes, isAuth will be set true, else it's false
                 this.setState({isAuth: true})
             } else {
                 this.setState({isAuth: false})
@@ -57,7 +57,7 @@ class AdsDetail extends Component {
     render() {
         const{ads, loading, isAuth}=this.state
         const AdsDetailWithLoading = WithLoading(ViewAdsDetail)
-        
+        console.log(ads)
         return (
             <div className="ads-detail">
                 <AppNavbar1 adsActive={"nav-item active"}/>
