@@ -47,7 +47,6 @@ class Login extends Component {
                 this.setState({errors: json})
             }
             if(statusCode === 200){
-                console.log(json)
                 this.setState({
                     success: json.success,
                     token: json.token,
@@ -65,7 +64,7 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        console.log(errors)
+        
         return (
             
             <div>

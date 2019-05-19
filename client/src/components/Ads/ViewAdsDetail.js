@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './css/ads.css'
 import numFormatter from "../../utils/numFormatter";
-import Moment from 'react-moment';
+import Moment from 'react-moment'; //to deal with date format
 
 
 class ViewAdsDetail extends Component {
     render() {
         const {ads, isAuth} = this.props;
 
-        const adsDetail = (!ads)? (
+        const adsDetail = (!ads)? (  
+            // because there is a moment that ads is undefined or null 
             <p>Errors!!!!</p>
         ): (
             <div className="view-ads-detail">
@@ -140,7 +141,12 @@ class ViewAdsDetail extends Component {
                                 </div>
                                 {isAuth && (
                                     <div className="edit-btn">
-                                    <button className="btn btn-dark">Edit Ads</button>
+                                        <Link to={{
+                                            pathname:'/addads',
+                                            state:{
+                                                ads: ads
+                                            } //link to addads.js with the state
+                                        }}><button className="btn btn-dark">Edit Ads</button></Link>
                                     </div>
                                 )}
 
@@ -152,7 +158,7 @@ class ViewAdsDetail extends Component {
                                             <div className="float-lg-right py-3">
                                                 <h5>Posted by</h5>
                                                 <h3>{ads.user.name}</h3>
-                                                <Moment format="YYYY/MM/DD">{ads.postDate}</Moment>
+                                                <Moment format="YYYY/MM/DD">{ads.postDate}</Moment> 
                                             </div>
                                             
                                         </div>

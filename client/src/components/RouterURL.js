@@ -13,6 +13,8 @@ import AddAds from './Ads/AddAds';
 import AddProject from './Projects/AddProject';
 import ProjectDetail from "./Projects/ProjectDetail";
 import AdsDetail from "./Ads/AdsDetail";
+import UserProjects from './Users/UserProjects';
+import UserAds from './Users/UserAds';
 
 class RouterURL extends Component {
     render() {
@@ -31,6 +33,8 @@ class RouterURL extends Component {
                     <PrivateRoute exact path={'/addprofile'} component={AddEditProfile}/>
                     <PrivateRoute exact path={'/addads'} component={AddAds}/>
                     <PrivateRoute exact path={'/addproject'} component={AddProject}/>
+                    <PrivateRoute exact path={'/urproject'} component={UserProjects}/>
+                    <PrivateRoute exact path={'/urads'} component={UserAds}/>
                 </Switch>
             </div>
         );

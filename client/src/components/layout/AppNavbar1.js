@@ -12,8 +12,8 @@ class AppNavbar1 extends Component {
         
       }
 
-    signOut=(e)=> {
-        e.preventDefault();
+    signOut=()=> {
+        
         localStorage.removeItem('jwtToken')
         alert('Successfully Logged out')
         this.setState({isAuth: false})
@@ -33,7 +33,8 @@ class AppNavbar1 extends Component {
                 </div>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <Link className="dropdown-item" to={"/profile"}>Your Profile</Link>
-                    <Link className="dropdown-item" to={"/"}>Your Ads/Projects</Link>
+                    <Link className="dropdown-item" to={"/urads"}>Your Ads</Link>
+                    <Link className="dropdown-item" to={"/urproject"}>Your Project</Link>
                     <Link className="dropdown-item" to={"/addads"}>Add Ads</Link>
                     <Link className="dropdown-item" to={"/addproject"}>Add Project</Link>
                     <div className="dropdown-divider" />

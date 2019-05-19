@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 class ViewProfile extends Component {
     render() {
         const {profile, errors}=this.props;
-        const token = localStorage.getItem('jwtToken')
+        // const token = localStorage.getItem('jwtToken')
 
         var profileDisplay = (!errors || (typeof errors ==='object' && Object.keys(errors).length===0))? (
 

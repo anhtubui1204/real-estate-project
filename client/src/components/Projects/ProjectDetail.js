@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AppNavbar1 from "../layout/AppNavbar1";
-import {urlProject} from "../../myURL";
+import {urlProject, urlUsers} from "../../myURL";
 import './css/projects.css'
 import WithLoading from "../../utils/WithLoading";
 import ViewPrjDetail from "./ViewPrjDetail";
@@ -15,29 +15,50 @@ class ProjectDetail extends Component {
         }
     }
 
-    fetchPrj=()=>{
+    fetchData=()=>{
         const {id} = this.props.match.params;
+        const token = localStorage.getItem('jwtToken');
 
-        fetch(urlProject+'/'+id)
+        var apiRequest1 = fetch(urlProject+'/'+id)
             .then(res=>res.json())
-            .then(json=>this.setState({project: json, loading: false}))
-            .catch(err=>console.log(err))
+
+        var apiRequest2 = token? fetch(urlUsers+'/current',{
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                }
+            })
+            .then(res=>res.json()) : {}  //if token exists, then fetch data, else return {}
+        
+        Promise.all([apiRequest1,apiRequest2]).then((values)=>{
+            this.setState({
+                loading:false,
+                project:values[0],
+                authUser:values[1]
+            })
+            if (values[1] && values[1].id === values[0].user._id){   //this will check if the current loged in user is the one who posted the ads. if yes, isAuth will be set true, else it's false
+                this.setState({isAuth: true})
+            } else {
+                this.setState({isAuth: false})
+            }
+        });
     }
 
     componentDidMount() {
         this.setState({loading: true})
-        this.fetchPrj()
+        this.fetchData()
     }
 
     render() {
-        const {project, loading} = this.state;
+        const {project, loading, isAuth} = this.state;
         console.log(project)
         const PrjDetailWithLoading = WithLoading(ViewPrjDetail)
 
         return (
             <div className="project-detail">
                 <AppNavbar1 projectActive={"nav-item active"}/>
-                <PrjDetailWithLoading isLoading={loading} project={project}/>
+                <PrjDetailWithLoading isAuth={isAuth} isLoading={loading} project={project}/>
             </div>
         );
     }

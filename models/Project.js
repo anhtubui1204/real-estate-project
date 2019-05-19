@@ -48,7 +48,6 @@ const ProjectSchema = new Schema ({
     },
     endYear: {
         type: Number
-        
     },
     postDate: {
         type: Date,

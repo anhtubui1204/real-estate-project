@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import{Link} from 'react-router-dom';
 
 class ViewPrjDetail extends Component {
     render() {
-        const {project}=this.props
+        const {project, isAuth}=this.props
         const prjDetail = (!project)? (
             <p>Project not found</p>
         ):(
@@ -54,6 +55,7 @@ class ViewPrjDetail extends Component {
                                             Start Year
                                         </span>
                                         <strong className="d-block">{project.startYear}</strong>
+                                        {project.endYear && (<div><span className="caption">To</span><strong className="d-block">{project.endYear}</strong></div>)}
                                     </div>
                                     <div className="col-md-6 col-lg-4 p-3 text-center">
                                         <span className="caption">
@@ -91,7 +93,16 @@ class ViewPrjDetail extends Component {
                                     </div>
                                 </div>
                             </div>
-
+                            {isAuth && (
+                                <div className="edit-btn d-flex justify-content-center" style={{margin:"20px 0px"}}>
+                                <Link to= {{
+                                    pathname:'/addproject',
+                                    state:{
+                                        project:project
+                                    }//link to addproject.js with the state
+                                }}><button className="btn btn-dark">Edit Project</button></Link>  
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
