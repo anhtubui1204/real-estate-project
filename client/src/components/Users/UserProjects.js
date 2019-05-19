@@ -34,11 +34,12 @@ class UserProjects extends Component {
             } else {
                 this.setState({
                     projects: json,
-                    isAuth: true
+                    
                 })
             }
             this.setState({loading:false})
         })
+        .catch(err=>console.log(err))
 
     }
 
@@ -63,7 +64,7 @@ class UserProjects extends Component {
                     </div>
                 </div>
                 <div className="display-items my-5">
-                    <UrProjectWithLoading isLoading={loading} errors={errors} projects={projects} />
+                    <UrProjectWithLoading isLoading={loading} errors={errors} projects={projects} refresh={this.fetchProject.bind(this)} />
                 </div>
 
             </div>

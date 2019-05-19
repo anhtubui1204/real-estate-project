@@ -164,7 +164,7 @@ class AdsList extends Component {
                                     <div className="filter-range"> 
                                         <div className="form-group ">
                                             <label htmlFor="priceRange">Price Range</label>
-                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchPrice" type="range" className="slider" min="0" max="1000000" defaultValue={searchPrice} step="100" id="priceRange"/>
+                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchPrice" type="range" className="slider" min="0" max="1000000"  step="100" id="priceRange"/>
                                         </div>
                                         <div className="range-wrapper">
                                             <span>$: </span><span> from 0 to </span><span>{numFormatter(searchPrice)}</span>
@@ -175,7 +175,7 @@ class AdsList extends Component {
                                     <div className="filter-range"> 
                                         <div className="form-group ">
                                             <label htmlFor="areaRange">Area Range</label>
-                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchArea" type="range" className="slider" min="0" max="3000" defaultValue={searchArea} step="10" id="areaRange"/>
+                                            <input onChange={this.handleChange.bind(this)} value={searchPrice} name="searchArea" type="range" className="slider" min="0" max="3000" step="10" id="areaRange"/>
                                         </div>
                                         <div className="range-wrapper">
                                             <span>m2: </span><span> from 0 to </span><span>{numFormatter(searchArea)}</span>

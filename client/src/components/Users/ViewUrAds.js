@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import {Link} from 'react-router-dom'
-import { urlProject } from '../../myURL';
+import { urlAds } from '../../myURL';
 
-class ViewUrPrj extends Component {
+class ViewUrAds extends Component {
     
     handleDel=(id)=>{
         const localToken = localStorage.getItem('jwtToken');
-        console.log(id)
-        fetch(urlProject+ '/delete/'+id,{
+        fetch(urlAds+'/delete/'+id,{
             headers:{
                 'Authorization': localToken
             },
@@ -17,27 +16,27 @@ class ViewUrPrj extends Component {
         })
         .then(res=>res.json())
         .then(json=>{
-            alert('Project Deleted!')
-            this.props.refresh()
+            alert('Ad Deleted!')
+            this.props.history.push('/ads')
         })
         .catch(err=>console.log(err))
     }
 
     render() {
-        const{projects, errors} = this.props
-        const urPrjs = (!projects || projects.length === 0) ? (
-            <p>Project not found</p>
+        const{ads, errors} = this.props
+        const urAds = (!ads || ads.length === 0) ? (
+            <tr><th>Ad not found</th></tr>
         ) : (
-            projects.map((project, index)=>(
+            ads.map((ad, index)=>(
                 <tr key={index}>
                     <th scope="row">{index+1}</th>
-                    <td>{project.name}</td>
-                    <td>{project.projectHandle}</td>
-                    <td><Moment format="YYYY/MM/DD">{project.postDate}</Moment></td>
+                    <td>{ad.title}</td>
+                    <td>{ad.project?ad.project.name:''}</td>
+                    <td><Moment format="YYYY/MM/DD">{ad.postDate}</Moment></td>
                     <td>
                         <div className="btn-group" role="group" aria-label="Basic example">
-                            <Link to={`/detailprj/${project._id}`}><button type="button" className="btn btn-info">Detail</button></Link>
-                            <button onClick={this.handleDel.bind(this, project._id)} type="button" className="btn btn-danger">Delete</button>
+                            <Link to={`/detailads/${ad._id}`}><button type="button" className="btn btn-info">Detail</button></Link>
+                            <button onClick={this.handleDel.bind(this, ad._id)} type="button" className="btn btn-danger">Delete</button>
                         </div>
                     </td>
                 </tr>
@@ -49,14 +48,14 @@ class ViewUrPrj extends Component {
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Ad Name</th>
                         <th scope="col">Project Name</th>
-                        <th scope="col">Project Handle</th>
                         <th scope="col">Post Date</th>
                         <th scope="col">Detail/Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                        {urPrjs}
+                        {urAds}
                     </tbody>
                 </table>
             </div>
@@ -64,4 +63,4 @@ class ViewUrPrj extends Component {
     }
 }
 
-export default ViewUrPrj;
+export default ViewUrAds;
