@@ -36,7 +36,6 @@ class UserProjects extends Component {
             } else {
                 this.setState({
                     projects: json,
-                    
                 })
             }
             this.setState({loading:false})
@@ -59,7 +58,6 @@ class UserProjects extends Component {
             this.props.history.push('/project')
         })
         .catch(err=>console.log(err))
-        
     }
 
     componentDidMount=()=>{
