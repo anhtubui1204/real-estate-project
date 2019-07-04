@@ -63,7 +63,7 @@ class AddAds extends Component {
                 image2:ads.imageURL.otherImgages.image2? ads.imageURL.otherImgages.image2 : '',
                 image3:ads.imageURL.otherImgages.image3? ads.imageURL.otherImgages.image3 : '',
 
-                project:ads.project? ads.project : '',
+                project:ads.project? ads.project._id : '',
                 adsId:ads._id?ads._id:''
             })
         }
@@ -208,7 +208,6 @@ class AddAds extends Component {
                                 <div className="form-group col-md-4">
                                     <label htmlFor="inputProject">Project</label>
                                     <select onChange={this.handleChange.bind(this)} name="project" id="inputProject" className="form-control">
-                                    <option defaultValue="">Choose...</option>
                                     {listSelectProjects}
                                     </select>
                                 </div>
