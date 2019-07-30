@@ -27,7 +27,6 @@ class ViewAdsList extends Component {
         )
 
         return (
-            
             <div className="row d-flex justify-content-center">
                 {listAds}
             </div>

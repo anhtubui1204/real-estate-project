@@ -55,7 +55,7 @@ class UserProjects extends Component {
         .then(res=>res.json())
         .then(json=>{
             alert(json.msg)
-            this.props.history.push('/project')
+            this.props.history.push('/ManagerServiceList')
         })
         .catch(err=>console.log(err))
     }
