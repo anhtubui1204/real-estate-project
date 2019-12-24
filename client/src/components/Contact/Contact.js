@@ -11,7 +11,7 @@ class Contact extends Component {
                         <div className="row">
                             <div className="col-6">
                             <div className="map">
-                                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOcs5VtxODOq_ARsAZBy5GKemfnfWkYW8 &q=RMIT University Vietnam Saigon South Campus" width="100%" height="650px" frameBorder={0} style={{border: 0}} allowFullScreen />
+                                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOcs5VtxODOq_ARsAZBy5GKemfnfWkYW8 &q=RMIT University Vietnam Saigon South Campus" width="100%"  frameBorder={0} style={{border: 0}} allowFullScreen />
                             </div>
                             </div>
                             <div className="col-6">
