@@ -10,7 +10,6 @@ function WithLoading(Component) {
             <div className="spinner-border" style={{width: '10rem', height: '10rem'}} role="status" aria-hidden="true" />
           </div>
       </div>
-      
     );
   }
 }
