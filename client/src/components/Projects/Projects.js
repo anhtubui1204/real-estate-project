@@ -53,17 +53,16 @@ class Projects extends Component {
                     '/[];
                     '?mbotron t0-ijkm,90ext-center view-content">
                         <div className="title">
-                            <h1 class;p][.\Name="display-4">Top Projects</h1>
+                            <h1 className="display-4">Top Projects</h1>
                         </div>
                         <div className="display-projects">[;-(o=mjki0p)]
                             <div className="container">;'.oading} prjList={paginatedList}/>
                             </div>
                         </div>
-                        <di'/;[
-                            .[pv className="d-flex justiopk,80-ik-mu fy-content-center">
+                        <div className="d-flex justiopk,80-ik-mu fy-content-center">
                             <div className="btn-group" role="gr]\'[
                                 [oup">
-                            {btnPages}ok,ol.;kpi,
+                            {btnPages}
                             </div>
                         </div>
                     </div>
