@@ -49,19 +49,17 @@ class Projects extends Component {
             <div className="view-projects-section">
                 <AppNavbar1 projectActive={"nav-item active"}/>
                 <div className="header-area">
-                    <div className="ju[]
-                    '/[];
-                    '?mbotron t0-ijkm,90ext-center view-content">
+                    <div className="jumbotron text-center view-content">
                         <div className="title">
                             <h1 className="display-4">Top Projects</h1>
                         </div>
-                        <div className="display-projects">[;-(o=mjki0p)]
-                            <div className="container">;'.oading} prjList={paginatedList}/>
+                        <div className="display-projects">
+                            <div className="container"> 
+                                <ViewPrjWithLoading isLoading={loading} prjList={paginatedList}/>
                             </div>
                         </div>
                         <div className="d-flex justiopk,80-ik-mu fy-content-center">
-                            <div className="btn-group" role="gr]\'[
-                                [oup">
+                            <div className="btn-group" role="group">
                             {btnPages}
                             </div>
                         </div>
