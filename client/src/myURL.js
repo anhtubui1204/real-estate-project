@@ -1,4 +1,7 @@
-export const urlAds='/api/ads';
-export const urlProject='/api/project';
-export const urlUsers='/api/users';
-export const urlProfile='/api/profile';
+const localhost = ''
+
+
+export const urlAds=`${localhost}/api/ads`;
+export const urlProject=`${localhost}/api/project`;
+export const urlUsers=`${localhost}/api/users`;
+export const urlProfile=`${localhost}/api/profile`;

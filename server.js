@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport'); //used for account authorization with JWT token
+const cors = require('cors');
 const path = require('path');
 const users= require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -30,6 +31,12 @@ app.use(passport.initialize());
 
 //Passport Config
 require('./config/passport')(passport);
+
+//cors - for handler cors error
+if (process.env.NODE_ENV === 'development') {
+    app.use(cors({origin: `http://localhost:3000`}))
+}
+
 
 
 app.get('/', (req, res)=> {
